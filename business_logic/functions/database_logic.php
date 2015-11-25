@@ -45,12 +45,14 @@
 			strcmp($action, 'change_password') != 0 and strcmp($action, 'deleted_account') != 0 )
 				return false;
 		
-		return makeQuery("INSERT INTO action (nick, email, ip, action)
-				VALUES ('{$nick}', '{$email}', '{$ip}', '{$action}')");	
+		return makeQuery("INSERT INTO action (nick, email, ip, action) VALUES ('{$nick}', '{$email}', '{$ip}', '{$action}')");	
 	}
 
-	function addAlbum($ip, $nick, $email, $albumName) {
-		return makeQuery("INSERT INTO album (nick, name) VALUES ('{$nick}', '{$albumName}')");
+	function addAlbum($nick, $albumName, $coverPath) {
+		if (strcmp($coverPath, "DEFAULT") == 0)
+			return makeQuery("INSERT INTO album (nick, name, cover) VALUES ('{$nick}', '{$albumName}', DEFAULT)");
+		
+		return makeQuery("INSERT INTO album (nick, name, cover) VALUES ('{$nick}', '{$albumName}', '{$coverPath}')");
 	}
 	
 	function addPhoto($nick, $path, $albumName) {
@@ -60,15 +62,15 @@
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	
 	function getPassword($nick) {
-		return makeQuery("SELECT password FROM user WHERE nick = '{$nick}'");
+		return mysqli_fetch_assoc(makeQuery("SELECT password FROM user WHERE nick = '{$nick}'"))['password'];		
 	}
 	
 	function getEmail($nick) {
-		return  makeQuery("SELECT email FROM user WHERE nick='{$nick}'");
+		return mysqli_fetch_assoc(makeQuery("SELECT email FROM user WHERE nick='{$nick}'"))['email'];
 	}
 	
 	function getRole($nick) {
-		return  makeQuery("SELECT role FROM user WHERE nick='{$nick}'");
+		return mysqli_fetch_assoc(makeQuery("SELECT role FROM user WHERE nick='{$nick}'"))['role'];
 	}
 	
 	function setPassword($nick, $password) {
@@ -79,11 +81,19 @@
 		return makeQuery("UPDATE user SET avatar='{$avatar_path}' WHERE nick='{$nick}'");
 	}
 	
+	function setAlbumCover($nick, $albumName, $albumCoverPath) {
+		if (strcmp($albumCoverPath, "DEFAULT") == 0)
+			return makeQuery("UPDATE album SET cover=DEFAULT WHERE nick='{$nick}' AND name='{$albumName}''");
+			
+		return makeQuery("UPDATE album SET cover='{$albumCoverPath}' WHERE nick='{$nick}' AND name='{$albumName}'");
+	}
+	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	function isAlbum($nick, $albumName) {
-		return makeQuery("SELECT COUNT(*) FROM album WHERE nick='{$nick}' AND name='{$albumName}'");
+		return makeQuery("SELECT COUNT[*] FROM album WHERE nick='{$nick}' AND name='{$albumName}'") > 0;
 	}	
+	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	function get_client_ip() {

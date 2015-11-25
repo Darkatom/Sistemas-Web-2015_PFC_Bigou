@@ -23,17 +23,18 @@
 		if ($intentos <= 3){*/
 		
 			$hashedPassword = hash("sha256", $password, false);
-							
+			
 			if(checkNickPassword($nick,  $hashedPassword))
 			{
-				$_SESSION["nick"] = $nick;
+				$email = getEmail($nick);
+				$_SESSION['nick'] = $nick;
+				$_SESSION['email'] = $email;
 				$_SESSION['role'] = getRole($email);
-				$email = getEmail($email);
 				
 				//setcookie( 'intentos', 0, time() + 1800 ); //30 minutos
 				
-				newAction($nick, $email, $ip, 'logged_in'); 
-				newConnection($nick, $email, $ip);
+				addAction($nick, $email, $ip, 'logged_in'); 
+				addConnection($nick, $email, $ip);
 				
 				return '0';	// Logged.
 			} else { //if ($intentos < 3) {
@@ -49,10 +50,11 @@
 	}
 	
 	function checkNickPassword($nick, $password) {		
-		$truePassword = mysqli_fetch_array(getPassword($nick));
-		
-		if (strcmp($truePassword[0], $password) == 0)
-			return true;
+		$truePassword = getPassword($nick);
+
+		if ($truePassword != null)
+			if (strcmp($truePassword, $password) == 0)
+				return true;
 		
 		return false;
 	}

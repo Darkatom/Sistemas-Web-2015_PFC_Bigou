@@ -1,13 +1,12 @@
 <?php
 	include_once 'database_logic.php';
 	
-	function newAlbum($ip, $nick, $email, $albumName) {
-		if (addAlbum($ip, $nick, $email, $albumName)) {			
-			addAction($nick, $email, $ip, 'new_album');
-			return true;
-		}
+	function newAlbum($ip, $nick, $email, $albumName, $coverPath) {
+		if (!addAlbum($nick, $albumName, $coverPath)) 			
+			return false;
 		
-		return false;
+		addAction($nick, $email, $ip, 'new_album');
+		return true;
 	}
 	
 	function deleteAlbum($nick, $albumName) {
@@ -22,16 +21,15 @@
 	}
 	
 	function uploadPhoto($ip, $image, $nick, $email, $path, $albumName) {
-		$existsAlbum = isAlbum($nick, $albumName) > 0; 
-		
-		if (!$existsAlbum)
-			if (!newAlbum($ip, $nick, $email, $albumName))
+		$existsAlbum = isAlbum($nick, $albumName); 
+	
+		if (!$existsAlbum) {
+			if (!newAlbum($ip, $nick, $email, $albumName, "DEFAULT"))
 				return '1';
-		
+		}		
 	
 		if (uploadImage($image, $path)){
-			$avatar_real_path = $path.basename($image["name"]);
-			$newPhoto = addPhoto($nick, $avatar_real_path, $albumName);
+			$newPhoto = addPhoto($nick, $path, $albumName);
 			
 			if (!newPhoto and !$existsAlbum) {
 				deleteAlbum($nick, $albumName);
@@ -46,8 +44,7 @@
 	}	
 	
 	function uploadImage($image, $path) {
-		return move_uploaded_file($_SERVER['DOCUMENT_ROOT']."/bigou/business_logic".$image["tmp_name"], 
-								  $_SERVER['DOCUMENT_ROOT']."/bigou/".$path."/".$image["name"]);
+		return move_uploaded_file($image["tmp_name"], "../".$path);
 	}
 	
 	function acceptImage($image) {

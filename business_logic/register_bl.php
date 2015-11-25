@@ -22,15 +22,37 @@
 			if (acceptImage($avatar)) {
 				echo "Imagen aceptada.<br/>";
 				
-				$path = "data/" . $_POST['nick'];
+				$path = "data/" . $nick;
 				if (!file_exists("../".$path) and !is_dir("../".$path)) {
 					mkdir("../".$path, 0777, true);	// 0777 default for folder, rather than 0755
 				}
-								
-				if (uploadPhoto($ip, $avatar, $nick, $email, $path, "Fotos de Perfil") != '0') {
+				
+				$path = $path."/".$avatar["name"];	
+				
+				$error = uploadPhoto($ip, $avatar, $nick, $email, $path, "Fotos de Perfil");
+				if ($error != '0') {
 					$path = "data/user.png";	
-					echo "Avatar NO subido. Subimos genérico.<br/>";
-				}
+					
+					switch($error) {
+						case '1':
+							echo "No se ha podido crear el álbum de fotos.";
+							break;
+						
+						case '2':
+							echo "No se ha podido añadir la foto a la base de datos.";
+							break;
+						
+						case '3':
+							echo "No se ha podido la foto.";
+							break;
+							
+						default:
+							echo $error;
+							break;
+					} 
+					echo "Se asignará un avatar genérico.<br/>";
+				} 
+					
 			}	
 		}
 		
@@ -40,6 +62,4 @@
 	} else {
 		echo "Usuario NO registrado.";
 	}
-		
-	
 ?> 
