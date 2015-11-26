@@ -1,0 +1,168 @@
+@charset "utf-8";
+
+/*	COLOURS
+	
+	White:			#ffffff
+	Almost White:	#e4e4e4
+	Light Grey:		#b1b1b1
+	Grey:			#868686
+	Dark Grey:		#636363
+	Almost Black:	#343434
+	Black:			#000000
+*/
+
+
+
+/* ------------------------------------------------------ */
+/* 				 		  GENERAL 				 		  */
+/* ------------------------------------------------------ */
+
+html {
+	min-height: 100%;
+	width: 1000px;
+	margin: auto;
+	position: relative;
+}
+
+body {
+	height: 100%;
+	margin: 0;
+	background: -webkit-linear-gradient(top,#ffffff 0%,#e4e4e4 100%);
+	background: -moz-linear-gradient(top,#ffffff 0%,#e4e4e4 100%);
+	background: -o-linear-gradient(top,#ffffff 0%,#e4e4e4 100%);
+	background: -khtml-linear-gradient(top,#ffffff 0%,#e4e4e4 100%);
+	background: -ms-linear-gradient(top,#ffffff 0%,#e4e4e4 100%);
+	background: linear-gradient(top,#ffffff 0%,#e4e4e4 100%);
+	background-repeat: no-repeat;
+	background-attachment: fixed;	
+}
+
+button {
+	outline: 0;	
+    cursor: pointer;
+    padding: 5px 4px;
+	border: 1px solid #868686;
+	font-size: 90%;
+	color:#0;
+	background: #f78096;
+	background: -webkit-linear-gradient(top,#ffffff 0%,#868686 100%);
+	background: -moz-linear-gradient(top,#ffffff 0%,#868686 100%);
+	background: -o-linear-gradient(top,#ffffff 0%,#868686 100%);
+	background: -khtml-linear-gradient(top,#ffffff 0%,#868686 100%);
+	background: -ms-linear-gradient(top,#ffffff 0%,#868686 100%);
+	background: linear-gradient(top,#ffffff 0%,#868686 100%);
+}
+
+button:hover { 
+	background: -webkit-linear-gradient(top,#ffffff 0%,#636363 100%);
+	background: -moz-linear-gradient(top,#ffffff 0%,#636363 100%);
+	background: -o-linear-gradient(top,#ffffff 0%,#636363 100%);
+	background: -khtml-linear-gradient(top,#ffffff 0%,#636363 100%);
+	background: -ms-linear-gradient(top,#ffffff 0%,#636363 100%);
+	background: linear-gradient(top,#ffffff 0%,#636363 100%);
+}
+
+button:active {
+	background: -webkit-linear-gradient(top,#b1b1b1 0%,#e4e4e4 100%);
+	background: -moz-linear-gradient(top,#b1b1b1 0%,#e4e4e4 100%);
+	background: -o-linear-gradient(top,#b1b1b1 0%,#e4e4e4 100%);
+	background: -khtml-linear-gradient(top,#b1b1b1 0%,#e4e4e4 100%);
+	background: -ms-linear-gradient(top,#b1b1b1 0%,#e4e4e4 100%);
+	background: linear-gradient(top,#b1b1b1 0%,#e4e4e4 100%);
+}
+
+
+/* ------------------------------------------------- */
+/*				 		 CANVAS				 		 */
+/* ------------------------------------------------- */
+#canvas {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	overflow: hidden;
+	z-index: -1;
+}
+
+div.canvas {
+	border-collapse: collapse;
+	background-color: white;
+	box-shadow: 10px 0 20px -1px rgba(31, 73, 125, 0.1), -10px 0 20px -1px rgba(31, 73, 125, 0.1); 
+}
+
+
+/* ------------------------------------------------- */
+/*		  	 	  		LOGIN				 		 */
+/*-------------------------------------------------- */
+
+.login {
+	float:right;
+	width:auto;
+	height:auto;
+	margin:0 auto;
+		
+	border-collapse: collapse;
+	border: 1px solid #636363;
+	
+	background: -webkit-linear-gradient(top,#ffffff 0%,#b1b1b1 100%);
+	background: -moz-linear-gradient(top,#ffffff 0%,#b1b1b1 100%);
+	background: -o-linear-gradient(top,#ffffff 0%,#b1b1b1 100%);
+	background: -khtml-linear-gradient(top,#ffffff 0%,#b1b1b1 100%);
+	background: -ms-linear-gradient(top,#ffffff 0%,#b1b1b1 100%);
+	background: linear-gradient(top,#ffffff 0%,#b1b1b1 100%);
+	padding: 0;
+	
+	/*box-shadow: 10px 0 20px -1px rgba(31, 73, 125, 0.1), -10px 0 20px -1px rgba(31, 73, 125, 0.1);*/
+}
+
+.login input[type="text"] input[type="password"] {
+
+
+}
+
+.login input[type="submit"] {
+
+}
+
+.login h1 {
+	font-size: 100%;
+	padding: 0;
+	margin: 0;	
+}
+
+.login p {
+	font-size: 75%;
+	padding: 0;
+	margin: 0;
+}
+
+.login a {
+}
+
+
+/* ------------------------------------------------- */
+/*		  	 	  		HEADER				 		 */
+/*-------------------------------------------------- */
+
+.header table {
+	width: 100%;
+	height: auto;
+}
+
+.header td {
+	width: auto;
+}
+
+.header td.title {
+	width: 100%;
+}
+
+.header td.menu {
+	border: 1px solid #868686;
+	background: #f78096;
+	background: -webkit-linear-gradient(top,#ffffff 0%,#868686 100%);
+	background: -moz-linear-gradient(top,#ffffff 0%,#868686 100%);
+	background: -o-linear-gradient(top,#ffffff 0%,#868686 100%);
+	background: -khtml-linear-gradient(top,#ffffff 0%,#868686 100%);
+	background: -ms-linear-gradient(top,#ffffff 0%,#868686 100%);
+	background: linear-gradient(top,#ffffff 0%,#868686 100%);
+}
