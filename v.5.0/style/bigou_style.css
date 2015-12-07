@@ -33,18 +33,7 @@ div.Canvas {
 	box-shadow: 10px 0 20px -1px rgba(31, 73, 125, 0.1), -10px 0 20px -1px rgba(31, 73, 125, 0.1); 
 }
 
-div.GeneralDisplay {
-    width: 50%;
-    margin: 0 auto;
-}
-
-div.AlbumDisplay {
-    width: 90%;
-    margin: 0 auto;
-	text-align: center;
-}
-
-div.PhotoDisplay {
+div.Display {
     width: 90%;
     margin: 0 auto;
 	text-align: center;
