@@ -36,7 +36,7 @@
 					break;
 			} 
 		} else {
-			header("Location: ../albums.php");
+			//header("Location: ../albums.php");
 		}
 		
 	} else {

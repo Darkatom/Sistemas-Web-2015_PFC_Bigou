@@ -53,7 +53,7 @@
 					<a href='./photos.php?var=$albumName'><button class='Basic Fancy' name='photos' onClick=''>Ver</button></a>";
 			
 			if ($self) {
-				$line = $line . "<button class='Basic Fancy' name='delete' onClick='deleteAlbum(\"$albumName\");'>&#10008</button></a>";
+				$line = $line . "<button class='Basic Fancy' name='delete' onClick='removeAlbum(\"$albumName\");'>&#10008</button></a>";
 			}
 								
 			$line = $line . "</div>";	

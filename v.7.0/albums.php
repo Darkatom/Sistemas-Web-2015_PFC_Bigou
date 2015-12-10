@@ -23,7 +23,18 @@
 		<script>
 			var nick = "<?php echo $nick; ?>";
 			getAlbumsOf(nick); 
-			var intervalID = window.setInterval( function () { getAlbumsOf(nick); }, 5000);	
+			//var intervalID = window.setInterval( function () { getAlbumsOf(nick); }, 5000);	
+			
+			function newAlbum() {
+				var newAlbum = document.getElementByName['newAlbum'];
+				addAlbum(newAlbum.albumName.value, newAlbum.access.value, loadFile);
+				// Vaciar formulario
+			}
+			
+			function removeAlbum(albumName) {
+				deleteAlbum(albumName);
+			}
+			
 		</script>
 	</head>  
 	<body>
@@ -61,7 +72,7 @@
 					</fieldset>
 					<br/>
 					<div style="text-align: center;">
-						<button type="submit" class="Basic Fancy" onClick="addAlbum(document.getElementByName['albumName'].value, document.getElementByName['access'].value, loadFile);"> Crear nuevo álbum </button>
+						<button type="submit" class="Basic Fancy" onClick="newAlbum();"> Crear nuevo álbum </button>
 					</div>
 				</form>     
 			</div>

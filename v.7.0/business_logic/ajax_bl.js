@@ -10,8 +10,7 @@ function addAlbum(albumName, access, cover) {
 	
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			// alert(xmlhttp.responseText);
-			return true;
+			getAlbumsOf(nick); 	
 		}
 	}
 	
@@ -30,8 +29,7 @@ function addPhoto(albumName, image) {
 	
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			// alert(xmlhttp.responseText);
-			return true;
+			getPhotosOf(nick); 	
 		}
 	}
 	
@@ -88,8 +86,7 @@ function deleteAlbum(albumName) {
 	
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			// alert(xmlhttp.responseText);
-			return true;
+			getAlbumsOf(nick); 	
 		}
 	}
 	
@@ -108,8 +105,7 @@ function deletePhoto(albumName, path) {
 	
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			alert(xmlhttp.responseText);
-			return true;
+			getPhotosOf(nick); 	
 		}
 	}
 	

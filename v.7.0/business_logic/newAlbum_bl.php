@@ -44,7 +44,7 @@
 				}
 
 				setAlbumCover($nick, $albumName, $path);
-				header("Location: ../albums.php");
+				//header("Location: ../albums.php");
 			}
 		} else {
 			echo "No se ha podido crear el álbum.<br/>";

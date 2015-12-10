@@ -1,4 +1,5 @@
 <?php
+	include_once 'database_logic.php';
 	function notLogged() {							
         return '
 		<div class="Login">
@@ -13,9 +14,12 @@
 		</div>';
 	}
 	
-	function logged($nick) {			
+	function logged($nick) {
+		$avatarPath = getAvatar($nick);
         return '<div class="Login">
 					<h1>'.$nick.'</h1>
+					<img src="'.$avatarPath.'" width="100" height="auto"/>
+					<br/><br/>
 					<a href="profile.php"><button class="Basic Fancy Login" name="profile">Mi cuenta</button></a>
 					<a href="business_logic/logout_bl.php"><button class="Basic Fancy Login" name="logout">Cerrar sesión</button></a>	
 				</div>';
