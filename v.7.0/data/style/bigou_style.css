@@ -1,0 +1,311 @@
+@charset "utf-8";
+
+/*	COLOURS
+	
+	White:			#ffffff
+	Nearly White:	#f7f7f7
+	Almost White:	#e4e4e4
+	Lightest Grey:	#dedede
+	Light Grey:		#b1b1b1
+	Grey:			#868686
+	Dark Grey:		#636363
+	Almost Black:	#343434
+	Black:			#000000
+*/
+
+
+
+/* ------------------------------------------------------ */
+/* 				 		  GENERAL 				 		  */
+/* ------------------------------------------------------ */
+
+html {
+	min-height: 100%;
+	width: 1000px;
+	margin: auto;
+	position: relative;
+}
+
+body {
+	height: 100%;
+	margin: 0;
+	background-image: url("images/page-bg.png");
+	background-repeat: repeat;
+	background-attachment: fixed;	
+}
+
+h1 {
+	font-family:'Lucida Grande',Tahoma,Verdana,Arial,Sans-serif;
+	color:#666;
+	font-size: 20px;
+	font-weight: 800;
+}
+
+p {
+	font-family:'Lucida Grande',Tahoma,Verdana,Arial,Sans-serif;
+	color:#666;
+	font-size:15px;
+	font-weight:700;
+}
+
+span {
+	font-family:'Lucida Grande',Tahoma,Verdana,Arial,Sans-serif;
+	color:#666;
+	font-size:15px;
+	font-weight:700;
+	vertical-align: middle;
+	line-height: 0px;
+}
+
+legend {
+	padding: 15px;
+	font-size: 25px;
+	font-family:'Lucida Grande',Tahoma,Verdana,Arial,Sans-serif;
+	color:#666;
+	font-size:15px;
+	font-weight:700;
+}
+
+label {
+	font-family:'Lucida Grande',Tahoma,Verdana,Arial,Sans-serif;
+	color:#666;
+	font-size:15px;
+	font-weight:700;
+}
+
+/* ------------------------------------------------------ */
+/* 					  BUTTONS & INPUTS			 		  */
+/* ------------------------------------------------------ */
+
+button.Basic {
+	margin-left: 7px;
+	margin-right: 7px;
+    padding: 5px 4px;
+	border: 1px solid #343434;
+	
+	font-family:'Lucida Grande',Tahoma,Verdana,Arial,Sans-serif;
+	
+	color:#666;
+	font-size:15px;
+	font-weight:700;
+	outline: 0;
+	
+	background: -webkit-linear-gradient(top,#f7f7f7 0%,#dedede 100%);
+	background: -moz-linear-gradient(top,#f7f7f7 0%,#dedede 100%);
+	background: -o-linear-gradient(top,#f7f7f7 0%,#dedede 100%);
+	background: -khtml-linear-gradient(top,#f7f7f7 0%,#dedede 100%);
+	background: -ms-linear-gradient(top,#f7f7f7 0%,#dedede 100%);
+	background: linear-gradient(top,#f7f7f7 0%,#dedede 100%);
+}
+
+button.Basic:hover { 
+	background: -webkit-linear-gradient(top,#e4e4e4 0%,#b1b1b1 100%);
+	background: -moz-linear-gradient(top,#e4e4e4 0%,#b1b1b1 100%);
+	background: -o-linear-gradient(top,#e4e4e4 0%,#b1b1b1 100%);
+	background: -khtml-linear-gradient(top,#e4e4e4 0%,#b1b1b1 100%);
+	background: -ms-linear-gradient(top,#e4e4e4 0%,#b1b1b1 100%);
+	background: linear-gradient(top,#e4e4e4 0%,#b1b1b1 100%);
+}
+
+button.Basic:active {
+	background: -webkit-linear-gradient(top,#868686 0%,#b1b1b1 100%);
+	background: -moz-linear-gradient(top,#868686 0%,#b1b1b1 100%);
+	background: -o-linear-gradient(top,#868686 0%,#b1b1b1 100%);
+	background: -khtml-linear-gradient(top,#868686 0%,#b1b1b1 100%);
+	background: -ms-linear-gradient(top,#868686 0%,#b1b1b1 100%);
+	background: linear-gradient(top,#868686 0%,#b1b1b1 100%);
+}
+
+button.Menu {
+	margin-left: 0px;
+	margin-right: 0px;
+	border: none;
+	border-right: 1px solid #343434;
+}
+
+button.Fancy {
+	height: 28px;
+	color: #666;
+	font-size: 11px;
+	font-weight:700;
+	
+	padding: 2px 6px;
+	
+	-webkit-box-shadow:rgba(0,0,0,0.98) 0 1px 0 0;
+	-moz-box-shadow:rgba(0,0,0,0.98) 0 1px 0 0;
+	box-shadow:rgba(0,0,0,0.98) 0 1px 0 0;
+
+	border: 1px solid #999;
+	border-radius:0;
+	-webkit-border-radius:0;
+	-moz-border-radius:0;
+}
+
+button.Login {
+	width: 90%;
+}
+
+input.Basic {
+	margin-left: 7px;
+	margin-right: 7px;
+    padding: 5px 4px;
+	border: 1px solid #343434;
+	
+	font-family:'Lucida Grande',Tahoma,Verdana,Arial,Sans-serif;
+	
+	color: #666;
+	font-size: 15px;
+	font-weight: 700;
+	outline: 0;
+	
+	background: -webkit-linear-gradient(top,#f7f7f7 0%,#dedede 100%);
+	background: -moz-linear-gradient(top,#f7f7f7 0%,#dedede 100%);
+	background: -o-linear-gradient(top,#f7f7f7 0%,#dedede 100%);
+	background: -khtml-linear-gradient(top,#f7f7f7 0%,#dedede 100%);
+	background: -ms-linear-gradient(top,#f7f7f7 0%,#dedede 100%);
+	background: linear-gradient(top,#f7f7f7 0%,#dedede 100%);
+}
+
+input.Basic:hover { 
+	background: -webkit-linear-gradient(top,#e4e4e4 0%,#b1b1b1 100%);
+	background: -moz-linear-gradient(top,#e4e4e4 0%,#b1b1b1 100%);
+	background: -o-linear-gradient(top,#e4e4e4 0%,#b1b1b1 100%);
+	background: -khtml-linear-gradient(top,#e4e4e4 0%,#b1b1b1 100%);
+	background: -ms-linear-gradient(top,#e4e4e4 0%,#b1b1b1 100%);
+	background: linear-gradient(top,#e4e4e4 0%,#b1b1b1 100%);
+}
+
+input.Basic:active {
+	background: -webkit-linear-gradient(top,#868686 0%,#b1b1b1 100%);
+	background: -moz-linear-gradient(top,#868686 0%,#b1b1b1 100%);
+	background: -o-linear-gradient(top,#868686 0%,#b1b1b1 100%);
+	background: -khtml-linear-gradient(top,#868686 0%,#b1b1b1 100%);
+	background: -ms-linear-gradient(top,#868686 0%,#b1b1b1 100%);
+	background: linear-gradient(top,#868686 0%,#b1b1b1 100%);
+}
+
+input.Fancy {
+	height: 28px;
+	color: #666;
+	font-size: 11px;
+	font-weight:700;
+	
+	padding: 2px 6px;
+	
+	-webkit-box-shadow: rgba(0,0,0,0.98) 0 1px 0 0;
+	-moz-box-shadow: rgba(0,0,0,0.98) 0 1px 0 0;
+	box-shadow: rgba(0,0,0,0.98) 0 1px 0 0;
+
+	border: 1px solid #999;
+	border-radius:0;
+	-webkit-border-radius:0;
+	-moz-border-radius:0;
+}
+
+input.Login {
+	width: 90%;
+}
+
+
+/* ------------------------------------------------- */
+/*				 		 CANVAS				 		 */
+/* ------------------------------------------------- */
+
+#Canvas {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	overflow: hidden;
+	z-index: -1;
+}
+
+div.Canvas {
+	border-collapse: collapse;
+	background-color: white;
+	box-shadow: 10px 0 20px -1px rgba(31, 73, 125, 0.1), -10px 0 20px -1px rgba(31, 73, 125, 0.1); 
+}
+
+
+/* ------------------------------------------------- */
+/*		  	 	  		LOGIN				 		 */
+/*-------------------------------------------------- */
+
+.Login {
+	float: right;
+	width: auto;
+	height: auto;
+	margin: 0 auto;
+	padding: 5px;
+		
+	border-collapse: collapse;
+	border: 1px solid #636363;
+	
+	background: -webkit-linear-gradient(top,#f7f7f7 0%,#dedede 100%);
+	background: -moz-linear-gradient(top,#f7f7f7 0%,#dedede 100%);
+	background: -o-linear-gradient(top,#f7f7f7 0%,#dedede 100%);
+	background: -khtml-linear-gradient(top,#f7f7f7 0%,#dedede 100%);
+	background: -ms-linear-gradient(top,#f7f7f7 0%,#dedede 100%);
+	background: linear-gradient(top,#f7f7f7 0%,#dedede 100%);
+	
+	/*box-shadow: 10px 0 20px -1px rgba(31, 73, 125, 0.1), -10px 0 20px -1px rgba(31, 73, 125, 0.1);*/
+}
+
+.Login input[type="text"] input[type="password"] {
+
+
+}
+
+.Login input[type="submit"] {
+
+}
+
+.Login h1 {
+	padding: 0;
+	padding-bottom: 3px;
+	margin: 0;	
+}
+
+.Login p {
+	font-size: 12px;
+	padding: 0;
+	margin: 0;
+}
+
+
+/* ------------------------------------------------- */
+/*		  	 	  		HEADER				 		 */
+/*-------------------------------------------------- */
+
+.Header table {
+	width: 100%;
+	height: auto;
+}
+
+.Header td {
+	width: auto;
+}
+
+.Header td.Title {
+	width: 100%;
+}
+
+.Header td.Menu {
+	border: 1px solid #868686;
+	background: #f78096;
+	background: -webkit-linear-gradient(top,#f7f7f7 0%,#dedede 100%);
+	background: -moz-linear-gradient(top,#f7f7f7 0%,#dedede 100%);
+	background: -o-linear-gradient(top,#f7f7f7 0%,#dedede 100%);
+	background: -khtml-linear-gradient(top,#f7f7f7 0%,#dedede 100%);
+	background: -ms-linear-gradient(top,#f7f7f7 0%,#dedede 100%);
+	background: linear-gradient(top,#f7f7f7 0%,#dedede 100%);
+}
+
+
+/* ------------------------------------------------- */
+/*		  	 	  		FORMS				 		 */
+/*-------------------------------------------------- */
+
+form.Fancy {
+	padding-left: 286px;
+	padding-right: 286px;
+}
