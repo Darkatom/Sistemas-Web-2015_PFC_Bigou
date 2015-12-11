@@ -25,9 +25,10 @@
 			getAlbumsOf(nick); 
 			//var intervalID = window.setInterval( function () { getAlbumsOf(nick); }, 5000);	
 			
-			function newAlbum() {
-				var newAlbum = document.getElementByName['newAlbum'];
-				addAlbum(newAlbum.albumName.value, newAlbum.access.value, loadFile);
+			function uploadAlbum() {
+				var album = document.getElementById('albumName').value;
+				var access = document.getElementById('access').value;
+				addAlbum(album, access, loadFile);
 				// Vaciar formulario
 			}
 			
@@ -41,14 +42,14 @@
 		<div class="Canvas">
 			<?php echo menuHeader(true, $nick, $_SESSION['role']); ?>
 			<div class="GeneralDisplay">
-				<form class="Fancy" enctype="multipart/form-data" onSubmit='' action="./business_logic/newAlbum_bl.php" method="post" name="newAlbum" > 
+				<form class="Fancy">
 					<fieldset>
 						<legend>Crear álbum</legend>
 						<label>Los campos marcados con (*) son obligatorios.</label><br/><br/>
 						
-						<label>(*) Nombre del álbum:</label> &emsp; <input type="text" name="albumName" onBlur = ""> 
+						<label>(*) Nombre del álbum:</label> &emsp; <input type="text" id="albumName" onBlur = ""> 
 						<br/><br/>					
-						<label>(*) Acceso:</label> &emsp; <select name="access" onBlur="checkAccess()">
+						<label>(*) Acceso:</label> &emsp; <select id="access" onBlur="checkAccess()">
 																<option value="private" selected>Privado</option>
 																<option value="limited">Acceso Limitado (Sólo usuarios registrados)</option>
 																<option value="public">Público</option>
@@ -63,7 +64,7 @@
 						<br/><br/>
 						<img id="output" align="center" width="150px" height="auto"/></br>
 							<script>
-							  var loadFile = function(event) {
+								var loadFile = function(event) {
 								var output = document.getElementById('output');
 								output.src = URL.createObjectURL(event.target.files[0]);
 							  };
@@ -72,9 +73,9 @@
 					</fieldset>
 					<br/>
 					<div style="text-align: center;">
-						<button type="submit" class="Basic Fancy" onClick="newAlbum();"> Crear nuevo álbum </button>
-					</div>
-				</form>     
+						<button class="Basic Fancy" onClick="uploadAlbum()"> Crear nuevo álbum </button>
+					</div> 
+				</form>				
 			</div>
 			<br/><br/>
 			<hr/>
