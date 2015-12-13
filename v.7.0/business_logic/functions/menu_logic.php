@@ -18,7 +18,7 @@
 		$avatarPath = getAvatar($nick);
         return '<div class="Login">
 					<h1>'.$nick.'</h1>
-					<img src="'.$avatarPath.'" width="100" height="auto"/>
+					<div id="avatar"><img src="'.$avatarPath.'" width="100" height="auto"/></div>
 					<br/><br/>
 					<a href="profile.php"><button class="Basic Fancy Login" name="profile">Mi cuenta</button></a>
 					<a href="business_logic/logout_bl.php"><button class="Basic Fancy Login" name="logout">Cerrar sesión</button></a>	
@@ -46,8 +46,9 @@
 								<a href="main.php"><button class="Basic Menu" name="main">Inicio</button></a><!--';
 		if ($logged) {
 			$header = $header.'--><a href="albums.php"><button class="Basic Menu" name="albums">Mis Álbumes</button></a><!--
-							   --><a href="album_new.php"><button class="Basic Menu" name="newAlbum">Crear Álbum</button></a><!--
-							   --><a href="photo_new.php"><button class="Basic Menu" name="newPhoto">Subir Foto</button></a><!--';
+							   --><a href="albums.php"><button class="Basic Menu" name="albums">Otros Álbumes</button></a><!--
+							   --><a href="albums.php"><button class="Basic Menu" name="albums">Etiquetas</button></a><!--
+							   --><a href="albums.php"><button class="Basic Menu" name="albums">Usuarios Registrados</button></a><!--';
 		}
 							
 		$header = $header.'--><a href=".html"><button class="Basic Menu" name="credits.php">Créditos</button></a>

@@ -1,4 +1,31 @@
 
+function changeAvatar(avatar) {			
+	if (window.XMLHttpRequest) {
+		// code for IE7+, Firefox, Chrome, Opera, Safari
+		var xmlhttp = new XMLHttpRequest();
+	} else {
+		// code for IE6, IE5
+		var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	
+	var url = "/business_logic/newAvatar_bl.php";
+	var params = "?new_avatar" + avatar;
+	xmlhttp.open("POST", url, true);
+
+	//Send the proper header information along with the request
+	xmlhttp.setRequestHeader("Content-type", "multipart/form-data");
+	xmlhttp.setRequestHeader("Content-length", params.length);
+	xmlhttp.setRequestHeader("Connection", "close");
+	
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			$("#avatar").html("<img src=" + xmlhttp.responseText + " width='120px' height='auto'>");
+		}
+	}
+	
+	xmlhttp.send(params);	
+}
+
 function addAlbum(albumName, access, cover) {				
 	if (window.XMLHttpRequest) {
 		// code for IE7+, Firefox, Chrome, Opera, Safari

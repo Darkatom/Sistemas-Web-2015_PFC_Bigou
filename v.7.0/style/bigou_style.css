@@ -39,6 +39,11 @@ div.Display {
 	text-align: center;
 }
 
+div.GeneralDisplay {
+    width: 90%;
+    margin: 0 auto;
+}
+
 
 /* ------------------------------------------------------ */
 /* 				 		  GENERAL 				 		  */
@@ -63,6 +68,13 @@ h1 {
 	font-family:'Lucida Grande',Tahoma,Verdana,Arial,Sans-serif;
 	color:#666;
 	font-size: 20px;
+	font-weight: 800;
+}
+
+h2 {
+	font-family:'Lucida Grande',Tahoma,Verdana,Arial,Sans-serif;
+	color:#666;
+	font-size: 16px;
 	font-weight: 800;
 }
 
@@ -350,4 +362,38 @@ form.Fancy {
 
 .Album p button {
     display: inline;
+}
+
+
+/* ------------------------------------------------- */
+/*		  	 	  		TABLES				 		 */
+/*-------------------------------------------------- */
+
+table.Fancy {
+	width: 100%;
+    border-bottom: 1px solid #fff;
+	align: center;
+}
+
+table.Fancy td {
+	padding: 5px 10px 5px 10px;
+
+}
+
+table.Fancy tr {
+	background: -webkit-linear-gradient(top,#f7f7f7 0%,#dedede 100%);
+	background: -moz-linear-gradient(top,#f7f7f7 0%,#dedede 100%);
+	background: -o-linear-gradient(top,#f7f7f7 0%,#dedede 100%);
+	background: -khtml-linear-gradient(top,#f7f7f7 0%,#dedede 100%);
+	background: -ms-linear-gradient(top,#f7f7f7 0%,#dedede 100%);
+	background: linear-gradient(top,#f7f7f7 0%,#dedede 100%);
+}
+
+table.Fancy tr:hover {
+	background: -webkit-linear-gradient(top,#dddcdc 0%,#c6c5c5 100%);
+	background: -moz-linear-gradient(top,#dddcdc 0%,#c6c5c5 100%);
+	background: -o-linear-gradient(top,#dddcdc 0%,#c6c5c5 100%);
+	background: -khtml-linear-gradient(top,#dddcdc 0%,#c6c5c5 100%);
+	background: -ms-linear-gradient(top,#dddcdc 0%,#c6c5c5 100%);
+	background: linear-gradient(top,#dddcdc 0%,#c6c5c5 100%);
 }
