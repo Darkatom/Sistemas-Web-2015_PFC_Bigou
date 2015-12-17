@@ -46,8 +46,8 @@
 								<a href="main.php"><button class="Basic Menu" name="main">Inicio</button></a><!--';
 		if ($logged) {
 			$header = $header.'--><a href="albums.php"><button class="Basic Menu" name="albums">Mis Álbumes</button></a><!--
-							   --><a href="albums.php"><button class="Basic Menu" name="albums">Buscar</button></a><!--
-							   --><a href="albums.php"><button class="Basic Menu" name="albums">Usuarios</button></a><!--';
+							   --><a href="index.php"><button class="Basic Menu" name="albums">Buscar</button></a><!--
+							   --><a href="users.php"><button class="Basic Menu" name="albums">Usuarios</button></a><!--';
 		}
 							
 		$header = $header.'--><a href=".html"><button class="Basic Menu" name="credits.php">Créditos</button></a>
@@ -126,5 +126,74 @@
 				</form>      
 			</div>';
 		
+	}
+	
+	function profileTable($nick, $targetNick) {
+		$selfProfile = (strcmp($nick, $targetNick) == 0);
+		$role = getRole($targetNick);
+		$avatar = getAvatar($targetNick);
+		$lastConnection = getLastConnection($targetNick);
+		
+		$width = 150;
+		$colspan = "";
+		
+		if ($selfProfile)
+			$colspan = 'colspan="2"';
+		
+		$profile ='<table class="Fancy">
+					  <tr>
+						<td class="Header" width="'.$width.'"><h2>Avatar</h2></td>
+						<td><div id="avatar"><img src="'.$avatar.'" width="120px" height="auto"></div></td>';
+		if ($selfProfile) {
+			$profile = $profile.'
+						<td>
+							<h2>Cambiar Avatar</h2>
+							<form id="ajaxAvatar" method="post" enctype="multipart/form-data">
+								<input type="file" name="new_avatar" id="new_avatar" onChange="loadFile(event)">
+							</form>
+							<br/><br/>
+							<img id="output" width="150px" height="auto"/></br>
+							<br/><br/>
+								<script>
+									var loadFile = function(event) {
+										var output = document.getElementById("output");
+										output.src = URL.createObjectURL(event.target.files[0]);
+									  };
+								</script>
+							<button class="Basic Fancy" onClick="changeAvatar()">Cambiar Avatar</button>
+						</td>';
+		}
+		
+		$profile = $profile.'
+					  </tr>
+					  <tr>
+						<td class="Header"><h2>Rol</h2></td>
+						<td ' . $colspan . '>'.$role.'</td>
+					  </tr>
+					  <tr>
+						<td class="Header"><h2>Última Conexión</h2></td>
+						<td ' . $colspan . '>'.$lastConnection.'</td>
+					  </tr>';
+					  
+		if ($selfProfile) {
+			$profile = $profile.'	
+					  <tr>
+						<td class="Header"><h2>Contraseña</h2></td>
+						<td ' . $colspan . '>
+							<label>Contraseña actual:</label>
+							<input type="password" name="oldPassword" id="oldPassword"></br></br>
+							<label>Nueva contraseña:</label>
+							<input type="password" name="newPassword" id="newPassword"></br></br>
+							<label>Repita la contraseña:</label>
+							<input type="password" name="repeatPassword" id="repeatPassword" onBlur="checkPassword()"></br></br>
+							<button class="Basic Fancy" onClick="uploadPassword()"> Cambiar Contraseña </button>
+						</td>
+					  </tr>';
+		}
+		
+		$profile = $profile.'</table>
+				<br>';	
+
+		return $profile;
 	}
 ?>

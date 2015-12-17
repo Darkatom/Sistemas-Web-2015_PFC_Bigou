@@ -5,10 +5,13 @@
 	session_start();
 		
 	$nick = $_SESSION['nick']; 
-	$targetNick = $_GET['user'];
+	$targetNick = $_GET['nick'];
 	
 	if (!(isset($targetNick) or isset($nick)))
 		header('Location: main.php');
+	
+	if (!isset($targetNick))
+		$targetNick = $nick;
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -23,25 +26,24 @@
 			var targetNick = "<?php echo $targetNick; ?>";
 			getAlbumsOf(targetNick); 
 			
-			function uploadAlbum() {
-				var album = document.getElementById('albumName').value;
-				var access = document.getElementById('access').value;
-				addAlbum(album, access);
-				// Vaciar formulario
-			}
-			
-			function removeAlbum(albumName) {
-				deleteAlbum(albumName);
-			}
+			<?php
+				if (strcmp($nick, $targetNick) == 0) 
+					echo "function uploadAlbum() {
+							var album = document.getElementById('albumName').value;
+							var access = document.getElementById('access').value;
+							addAlbum(album, access);
+							// Vaciar formulario
+						}";				
+			?>
 			
 		</script>
 	</head>  
 	<body>
 		<div class="Canvas">
 			<?php 
-				echo menuHeader(true, $nick, $_SESSION['role']);
+				echo menuHeader(isset($nick), $nick, $_SESSION['role']);
 				
-				if (strcmp($nick, $targetNick) == 0 or (!isset($targetNick) and isAlbum($nick, $album)))
+				if (strcmp($nick, $targetNick) == 0)
 					echo newAlbumForm().'<br/><br/><hr/><br/><br/>'; 				
 			?>
 			<div id="display" class="Display"></div>    

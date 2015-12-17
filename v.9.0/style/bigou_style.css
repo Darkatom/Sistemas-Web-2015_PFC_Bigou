@@ -375,11 +375,6 @@ table.Fancy {
 	align: center;
 }
 
-table.Fancy td {
-	padding: 5px 10px 5px 10px;
-
-}
-
 table.Fancy tr {
 	background: -webkit-linear-gradient(top,#f7f7f7 0%,#dedede 100%);
 	background: -moz-linear-gradient(top,#f7f7f7 0%,#dedede 100%);
@@ -390,6 +385,34 @@ table.Fancy tr {
 }
 
 table.Fancy tr:hover {
+	background: -webkit-linear-gradient(top,#dddcdc 0%,#c6c5c5 100%);
+	background: -moz-linear-gradient(top,#dddcdc 0%,#c6c5c5 100%);
+	background: -o-linear-gradient(top,#dddcdc 0%,#c6c5c5 100%);
+	background: -khtml-linear-gradient(top,#dddcdc 0%,#c6c5c5 100%);
+	background: -ms-linear-gradient(top,#dddcdc 0%,#c6c5c5 100%);
+	background: linear-gradient(top,#dddcdc 0%,#c6c5c5 100%);
+}
+
+table.Fancy tr.Header {
+	background: -webkit-linear-gradient(top,#dddcdc 0%,#c6c5c5 100%);
+	background: -moz-linear-gradient(top,#dddcdc 0%,#c6c5c5 100%);
+	background: -o-linear-gradient(top,#dddcdc 0%,#c6c5c5 100%);
+	background: -khtml-linear-gradient(top,#dddcdc 0%,#c6c5c5 100%);
+	background: -ms-linear-gradient(top,#dddcdc 0%,#c6c5c5 100%);
+	background: linear-gradient(top,#dddcdc 0%,#c6c5c5 100%);
+}
+
+table.Fancy td {
+	padding: 5px 10px 5px 10px;
+}
+
+table.Fancy td.Avatar {
+	width: auto;
+	text-align: center;
+}
+
+table.Fancy td.Header {
+	text-align: center;
 	background: -webkit-linear-gradient(top,#dddcdc 0%,#c6c5c5 100%);
 	background: -moz-linear-gradient(top,#dddcdc 0%,#c6c5c5 100%);
 	background: -o-linear-gradient(top,#dddcdc 0%,#c6c5c5 100%);

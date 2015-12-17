@@ -14,7 +14,7 @@
 		
 		if (strcmp($targetNick, "ALL") == 0) {
 			if (isset($nick)) {
-				$result = $result . printAlbums(getAlbums($nick), true);
+				$result = $result . printAlbums(getAlbums($nick), false);
 				$result = $result . printAlbums(getAllAlbums("limited", $nick), false); 
 				// EXTRA: Get Albums con acceso privilegiado.
 				// $result = $result . printAlbums();
@@ -28,7 +28,7 @@
 		
 		} else {
 			if (isset($nick)) {
-				$result = $result . printAlbums(getAlbums($nick), true);
+				$result = $result . printAlbums(getAlbums($targetNick), false);
 				$result = $result . printAlbums(getAlbumsByAccess("limited", null), false); 
 				// EXTRA: Get Albums con acceso privilegiado de Nick en TargetNick.
 				// $result = $result . printAlbums();
@@ -46,14 +46,15 @@
 	function printAlbums($albums, $self) {
 		$line = "";
 		foreach($albums as $alb ) {	
+			$nick = $alb['nick'];
 			$albumName = $alb['name'];
 			$line = $line . "<div class='Album'>
 					<img src='".$alb['cover']."'/>
 					<p>".$alb['name']."</p>
-					<a href='./photos.php?album=$albumName'><button class='Basic Fancy' name='photos' onClick=''>Ver</button></a>";
+					<a href='./photos.php?nick=$nick&album=$albumName'><button class='Basic Fancy' name='photos' onClick=''>Ver</button></a>";
 			
 			if ($self) {
-				$line = $line . "<button class='Basic Fancy' name='delete' onClick='removeAlbum(\"$albumName\");'>&#10008</button></a>";
+				$line = $line . "<button class='Basic Fancy' name='delete' onClick='deleteAlbum(\"$albumName\");'>&#10008</button></a>";
 			}
 								
 			$line = $line . "</div>";	

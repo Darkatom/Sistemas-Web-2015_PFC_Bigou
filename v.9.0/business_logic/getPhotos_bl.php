@@ -11,6 +11,7 @@
 	if (isset($_GET['target'])) {
 		$targetNick = $_GET['target'];
 		$album = $_GET['album']; 
+				
 		$result = "";
 		if (isAlbum($targetNick, $album)) {
 			if (isset($nick)) {

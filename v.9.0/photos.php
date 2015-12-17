@@ -5,11 +5,15 @@
 	session_start();
 			
 	$nick = $_SESSION['nick']; 
-	$targetNick = $_GET['user'];
+	$targetNick = $_GET['nick'];
 	$album = $_GET['album']; 	
 	
-	if (!(isset($targetNick) or isset($nick) or isset($_GET['album'])))
+	if (!isset($targetNick))
+		$targetNick = $nick;
+	
+	if (!(isset($_GET['nick']) or isset($nick)) or !isset($_GET['album']) or !isAlbum($targetNick, $album))
 		header('Location: main.php');
+	
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -22,19 +26,17 @@
 		<script language="JavaScript" src="./business_logic/ajax_bl.js"></script>
 		<script language="JavaScript" type="text/javascript" src="./business_logic/lib/jquery-1.11.3.min.js"></script>
 		<script>
-			var nick = "<?php echo $nick; ?>";
+			var target = "<?php echo $targetNick; ?>";
 			var album = "<?php echo $album;?>";
-			getPhotosOf(nick, album); 
-			//var intervalID = window.setInterval( function () { getPhotosOf(nick, album); }, 5000);	
-			
+			getPhotosOf(target, album); 			
 		</script>
 	</head> 
 	<body>
 		<div class="Canvas">
 			<?php 
-				echo menuHeader(true, $nick, $_SESSION['role']);
+				echo menuHeader(isset($nick), $nick, $_SESSION['role']);
 				
-				if (strcmp($nick, $targetNick) == 0 and isAlbum($targetNick, $album))
+				if (strcmp($nick, $targetNick) == 0 or isAlbum($nick, $album))
 					echo newPhotoForm($album).'<br/><br/><hr/><br/><br/>'; 				
 			?>  
 			<div id="display" class="Display"></div>    
