@@ -7,6 +7,7 @@
 	$ip = get_client_ip();
 	$nick = $_SESSION['nick']; 
 	$email = $_SESSION['email']; 
+	$role = $_SESSION['role'];
 	
 	if (isset($_GET['target'])) {
 		$targetNick = $_GET['target'];
@@ -15,7 +16,7 @@
 		$result = "";
 		if (isAlbum($targetNick, $album)) {
 			if (isset($nick)) {
-				if (strcmp($targetNick, $nick) == 0) {
+				if (strcmp($targetNick, $nick) == 0 or strcmp($role, "admin") == 0) {
 					$result = printPhotos(getPhotos($targetNick, $album), true);
 					addAction($nick, $email, $ip, "self_photos");	
 				
