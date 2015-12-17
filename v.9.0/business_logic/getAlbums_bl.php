@@ -12,29 +12,32 @@
 		$targetNick = $_GET['target'];
 		$result = "";
 		
-		if (strcmp($targetNick, "ALL") == 0) {
-			if (isset($nick)) {
-				$result = $result . printAlbums(getAlbums($nick), false);
-				$result = $result . printAlbums(getAllAlbums("limited", $nick), false); 
-				// EXTRA: Get Albums con acceso privilegiado.
-				// $result = $result . printAlbums();
-			} 	
-			$result = $result . printAlbums(getAllAlbums("public", $nick), false);
-			addAction($nick, $email, $ip, "all_albums");
-			
-		} elseif (isset($nick) and strcmp($targetNick, $nick) == 0) {
-			$result = $result . printAlbums(getAlbums($nick), true); 
-			addAction($nick, $email, $ip, "self_albums");
-		
-		} else {
-			if (isset($nick)) {
-				$result = $result . printAlbums(getAlbums($targetNick), false);
-				$result = $result . printAlbums(getAlbumsByAccess("limited", null), false); 
-				// EXTRA: Get Albums con acceso privilegiado de Nick en TargetNick.
-				// $result = $result . printAlbums();
-			} 	
-			$result = $result . printAlbums(getAlbumsByAccess("public", null), false);
-			addAction($nick, $email, $ip, "others_albums");	
+		switch($target) {
+			case "ADMIN":
+				break;
+				
+			case "ALL":
+				if (isset($nick)) {
+					$result = $result . printAlbums(getAlbums($nick), false);
+					$result = $result . printAlbums(getAllAlbums("limited", $nick), false); 
+				} 	
+				$result = $result . printAlbums(getAllAlbums("public", $nick), false);
+				addAction($nick, $email, $ip, "all_albums");
+				break;
+				
+			case $nick:
+				$result = $result . printAlbums(getAlbums($nick), true); 
+				addAction($nick, $email, $ip, "self_albums");
+				break;
+				
+			default:
+				if (isset($nick)) {
+					$result = $result . printAlbums(getAlbums($targetNick), false);
+					$result = $result . printAlbums(getAlbumsByAccess("limited", null), false); 
+				} 	
+				$result = $result . printAlbums(getAlbumsByAccess("public", null), false);
+				addAction($nick, $email, $ip, "others_albums");				
+				break;	
 		}
 				
 		echo $result;
