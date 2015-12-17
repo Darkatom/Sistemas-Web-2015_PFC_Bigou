@@ -46,22 +46,5 @@
 	} else {
 		echo "No se ha especificado ningún usuario.";
 	}
-	
-	function printPhotos($album, $self) {
-		$line = "";
-		foreach($album as $photo ) {
-			$path = $photo['path'];
-			$albumName = $photo['album'];
-			$line = $line . "<div class='Album'>
-								<a href='".$photo['path']."'><img src='".$photo['path']."' width=\"400\"/><a>";
-			
-			if ($self) {
-				$line = $line . "<button class='Basic Fancy' name='delete' onClick='deletePhoto(\"$albumName\", \"$path\");'>&#10008</button></a>";
-			}
-								
-			$line = $line . "</div>";	
-		}
-		
-		return $line;
-	}
+
 ?> 

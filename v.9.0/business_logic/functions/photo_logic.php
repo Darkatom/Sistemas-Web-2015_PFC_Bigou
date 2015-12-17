@@ -71,4 +71,41 @@
 			or $extension == "jpeg" or $extension == "gif";
 	}
 	
+	function printAlbums($albums, $self) {
+		$line = "";
+		foreach($albums as $alb ) {	
+			$nick = $alb['nick'];
+			$albumName = $alb['name'];
+			$line = $line . "<div class='Album'>
+					<img src='".$alb['cover']."'/>
+					<p>".$alb['name']."</p>
+					<a href='./photos.php?nick=$nick&album=$albumName'><button class='Basic Fancy' name='photos' onClick=''>Ver</button></a>";
+			
+			if ($self) {
+				$line = $line . "<button class='Basic Fancy' name='delete' onClick='deleteAlbum(\"$albumName\");'>&#10008</button></a>";
+			}
+								
+			$line = $line . "</div>";	
+		}
+		
+		return $line;
+	}
+		
+	function printPhotos($album, $self) {
+		$line = "";
+		foreach($album as $photo ) {
+			$path = $photo['path'];
+			$albumName = $photo['album'];
+			$line = $line . "<div class='Album'>
+								<a href='".$photo['path']."'><img src='".$photo['path']."' width=\"400\"/><a>";
+			
+			if ($self) {
+				$line = $line . "<button class='Basic Fancy' name='delete' onClick='deletePhoto(\"$albumName\", \"$path\");'>&#10008</button></a>";
+			}
+								
+			$line = $line . "</div>";	
+		}
+		
+		return $line;
+	}
 ?>

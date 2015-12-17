@@ -152,6 +152,11 @@
 		return mysqli_num_rows(makeQuery("SELECT * FROM album WHERE nick='$nick' AND name='$albumName'")) > 0;
 	}
 	
+	function isAccepted($nick, $albumName) {
+		$accepted = mysqli_fetch_assoc(makeQuery("SELECT * FROM album WHERE nick='$nick'"))['accepted'];
+		return strcmp($accepted, 'yes') == 0;
+	}
+	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	function get_client_ip() {

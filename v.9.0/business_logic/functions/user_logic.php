@@ -24,7 +24,7 @@
 		
 			//$hashedPassword = hash("sha256", $password, false);
 			
-			if(checkNickPassword($nick,  $password))
+			if(isAccepted($nick) and checkNickPassword($nick, $password))
 			{
 				$email = getEmail($nick);
 				$_SESSION['nick'] = $nick;
@@ -66,5 +66,30 @@
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	function printUsers($userList) {
+		
+		$userTable = "<table class='Fancy' align=center>
+							<tr class='Header'>
+								<td><p>Avatar<p></td>
+								<td><p>Usuario<p></td>
+								<td><p>Perfil<p></td>
+								<td><p>Álbumes<p></td>
+							</tr>";
+							
+		foreach($userList as $user ) {	
+			$nick = $user['nick'];
+			$avatar = $user['avatar'];
+			$userTable = $userTable."<tr>
+										<td class='Avatar'><img src='$avatar' width=40px/></td>
+										<td>$nick</td>
+										<td><a href='profile.php?nick=$nick'><button class='Basic Fancy Login' name='profile'>Ver Perfil</button></a></td>
+										<td><a href='albums.php?nick=$nick'><button class='Basic Fancy Login' name='profile'>Ver Álbumes</button></a></td>
+									  </tr>";
+		}
+		$userTable = $userTable."</table>";
+		
+		return $userTable;					
+	}
 	
 ?>

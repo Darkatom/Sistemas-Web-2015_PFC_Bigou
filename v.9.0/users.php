@@ -1,6 +1,7 @@
 ﻿<?php
 	include_once './business_logic/functions/database_logic.php';
 	include './business_logic/functions/menu_logic.php';
+	include './business_logic/functions/user_logic.php';
 	session_start();
 ?>
 
@@ -18,28 +19,7 @@
 		<div class="Canvas">
 			<?php echo menuHeader(isset($_SESSION['nick']), $_SESSION['nick'], $_SESSION['role']); ?>
 			<div class="GeneralDisplay">
-				<?php
-					echo"<table class='Fancy' align=center>
-							<tr class='Header'>
-								<td><p>Avatar<p></td>
-								<td><p>Usuario<p></td>
-								<td><p>Perfil<p></td>
-								<td><p>Álbumes<p></td>
-							</tr>";
-					$usersList = getAllUsers(); 
-					foreach($usersList as $user ) {	
-						$nick = $user['nick'];
-						$avatar = $user['avatar'];
-						echo "<tr>
-								<td class='Avatar'><img src='$avatar' width=40px/></td>
-								<td>$nick</td>
-								<td><a href='profile.php?nick=$nick'><button class='Basic Fancy Login' name='profile'>Ver Perfil</button></a></td>
-								<td><a href='albums.php?nick=$nick'><button class='Basic Fancy Login' name='profile'>Ver Álbumes</button></a></td>
-							  </tr>";
-					}
-					echo"</table>";
-					
-				?> 
+				<?php echo printUsers(getAllUsers);?> 
 			</div>    
 			<br/><br/>   
 		</div>
