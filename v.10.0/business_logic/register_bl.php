@@ -13,7 +13,6 @@
 	$gender = $_POST['gender'];
 						
 	
-	
 	if (strcmp($password, $repeatPassword) != 0)
 		header("Location: ../index.php?message=102");
 		
@@ -27,7 +26,7 @@
 	if (newUser($ip, $nick, $password, $email, $name, $surname, $age, $gender)) {
 		$path = "data/user.png";
 	
-		if (isset($$_FILES['avatar']) and acceptImage($$_FILES['avatar'])) {	
+		if (isset($_FILES['avatar']) and acceptImage($_FILES['avatar'])) {	
 			$avatar = $_FILES['avatar'];			
 			$path = "data/" . $nick . "/Fotos de Perfil de " . $nick;
 
@@ -48,4 +47,4 @@
 		//header("Location: ../index.php?message=101");
 	}	
 	
-	//header("Location: ../index.php?message=105");
+	header("Location: ../index.php");
