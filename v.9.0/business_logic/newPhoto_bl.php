@@ -7,11 +7,11 @@
 	$email = $_SESSION['email']; 
 	$albumName = $_POST['albumName']; 
 		
-	if (isset($_FILES['image']) and acceptImage($_FILES['image'])) {
+	if (isset($albumName) and isset($_FILES['image']) and acceptImage($_FILES['image'])) {
 		echo "Imagen aceptada.<br/>";
 		$image = $_FILES['image'];
 					
-		$path = "data/".$nick."/".$image["name"];	
+		$path = "data/".$nick."/".$albumName.'/'.$image["name"];	
 
 		echo $ip." ".$nick." ".$email." ".$path." ".$albumName;
 		

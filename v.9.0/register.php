@@ -48,6 +48,8 @@
 				$("#email_error").html("<h6>&#10004;</h6>");
 				$("#email_error").attr("class", "Correct");
 				
+				isEmail(email);
+				
 				return true;			
 			}
 			

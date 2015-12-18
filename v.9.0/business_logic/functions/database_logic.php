@@ -152,9 +152,13 @@
 		return mysqli_num_rows(makeQuery("SELECT * FROM user WHERE nick='$nick'")) > 0;
 	}
 	
-	function isAccepted($nick, $albumName) {
-		$accepted = mysqli_fetch_assoc(makeQuery("SELECT * FROM album WHERE nick='$nick'"))['accepted'];
-		return strcmp($accepted, 'yes') == 0;
+	function isEmail($email) {
+		return mysqli_num_rows(makeQuery("SELECT * FROM user WHERE email='$email'")) > 0;
+	}
+	
+	function isAccepted($nick) {
+		$accepted = mysqli_fetch_assoc(makeQuery("SELECT accepted FROM user WHERE nick='$nick'"))['accepted'];
+		return (strcmp($accepted, 'yes') == 0);
 	}
 	
 	function isAlbum($nick, $albumName) {

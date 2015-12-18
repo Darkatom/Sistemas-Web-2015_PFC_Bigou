@@ -14,6 +14,7 @@
 						
 	$avatar = $_FILES['avatar'];
 	
+	
 	if (strcmp($password, $repeatPassword) != 0)
 		header("Location: ../index.php?message=102");
 		
@@ -22,31 +23,29 @@
 		
 	if (!preg_match("/^[a-zA-Z]+([a-zA-Z]*[.|_|-]?)*@[a-zA-Z]+\.[a-zA-Z]+\.?[a-zA-Z]?$/", $email))
 		header("Location: ../index.php?message=104");
-	
+
 	if (newUser($ip, $nick, $password, $email, $name, $surname, $age, $gender)) {
 		$path = "data/user.png";
 	
-		if (isset($_FILES['avatar'])) {
-			if (acceptImage($avatar)) {				
-				$path = "data/" . $nick;
-				if (!file_exists("../".$path) and !is_dir("../".$path)) {
-					mkdir("../".$path, 0777, true);	// 0777 default for folder, rather than 0755
-				}
+		if (isset($_FILES['avatar']) and acceptImage($avatar)) {				
+			$path = "data/" . $nick . "/Fotos de Perfil de " . $nick;
+			if (!file_exists("../".$path) and !is_dir("../".$path)) {
+				mkdir("../".$path, 0777, true);	// 0777 default for folder, rather than 0755
+			}
+			
+			$path = $path."/".$avatar["name"];	
+			
+			$error = uploadPhoto($ip, $avatar, $nick, $email, $path, "Fotos de Perfil de ".$nick);
+			if ($error != '0') {
+				$path = "data/user.png";	
+			} 
 				
-				$path = $path."/".$avatar["name"];	
-				
-				$error = uploadPhoto($ip, $avatar, $nick, $email, $path, "Fotos de Perfil de ".$nick);
-				if ($error != '0') {
-					$path = "data/user.png";	
-				} 
-					
-			}	
-		}
-		
+		}	
+
 		setAvatar($nick, $path);
 		
 		header("Location: ../index.php?message=101");
-	}
+	}	
 	
 	header("Location: ../index.php?message=105");
 ?> 

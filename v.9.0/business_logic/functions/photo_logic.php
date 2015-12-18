@@ -10,15 +10,22 @@
 	}
 	
 	function deleteAlbum($nick, $albumName, $email, $ip) {	
+		$photos = getPhotos($nick, $albumName);
+		
 		if (removeAlbum($nick, $albumName)) {
 			addAction($nick, $email, $ip, 'delete_album');
+			
+			foreach($photos as $p) {
+				unlink($p['path']);
+				deletePhoto($nick, $albumName, $p['path'], $email, $ip);
+			}
+			
 			return true;
 		}
 		return false;
 	}
 	
-	function deletePhoto($nick, $albumName, $path, $email, $ip) {
-		
+	function deletePhoto($nick, $albumName, $path, $email, $ip) {	
 		if (removePhoto($nick, $path, $albumName)) {
 			addAction($nick, $email, $ip, 'delete_photo');
 			return true;
@@ -94,13 +101,14 @@
 	function printPhotos($album, $self) {
 		$line = "";
 		foreach($album as $photo ) {
+			$nick = $photo['nick'];
 			$path = $photo['path'];
 			$albumName = $photo['album'];
 			$line = $line . "<div class='Album'>
 								<a href='".$photo['path']."'><img src='".$photo['path']."' width=\"400\"/><a>";
 			
 			if ($self) {
-				$line = $line . "<button class='Basic Fancy' name='delete' onClick='deletePhoto(\"$albumName\", \"$path\");'>&#10008</button></a>";
+				$line = $line . "<button class='Basic Fancy' name='delete' onClick='deletePhoto(\"$nick\",\"$albumName\", \"$path\");'>&#10008</button></a>";
 			}
 								
 			$line = $line . "</div>";	

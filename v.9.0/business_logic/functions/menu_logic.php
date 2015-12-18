@@ -18,7 +18,7 @@
 		$avatarPath = getAvatar($nick);
         return '<div class="Login">
 					<h1>'.$nick.'</h1>
-					<div id="avatar"><img src="'.$avatarPath.'" width="100" height="auto"/></div>
+					<div id="loggedAvatar"><img src="'.$avatarPath.'" width="100" height="auto"/></div>
 					<br/><br/>
 					<a href="profile.php"><button class="Basic Fancy Login" name="profile">Mi perfil</button></a>
 					<a href="business_logic/logout_bl.php"><button class="Basic Fancy Login" name="logout">Cerrar sesión</button></a>	
@@ -143,7 +143,7 @@
 		$profile ='<table class="Fancy">
 					  <tr>
 						<td class="Header" width="'.$width.'"><h2>Avatar</h2></td>
-						<td><div id="avatar"><img src="'.$avatar.'" width="120px" height="auto"></div></td>';
+						<td><div id="profileAvatar"><img src="'.$avatar.'" width="120px" height="auto"></div></td>';
 		if ($selfProfile) {
 			$profile = $profile.'
 						<td>

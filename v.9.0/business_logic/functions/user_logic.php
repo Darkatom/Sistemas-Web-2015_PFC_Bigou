@@ -1,11 +1,10 @@
 ﻿<?php
 	include_once 'database_logic.php';
 
-	function newUser($ip, $nick, $password, $email, $name, $surname, $age, $gender) {
-		if (strcmp($gender, 'female') != 0 and strcmp($gender, 'male') != 0)
-				$gender = null;
-	
+	function newUser($ip, $nick, $password, $email, $name, $surname, $age, $gender)
+	{	
 		$hashedPassword = hash("sha256", $password, false);
+	
 		if (addUser($nick, $hashedPassword, $email, $name, $surname, $age, $gender)) {
 			addAction($nick, $email, $ip, 'register');
 			return true;
@@ -21,11 +20,12 @@
 		}
 				
 		if ($intentos <= 3){*/
-		
-			//$hashedPassword = hash("sha256", $password, false);
-			
-			if(isAccepted($nick) and checkNickPassword($nick, $password))
+	
+			if(checkNickPassword($nick, $password))
 			{
+				if (!isAccepted($nick))
+					return 3;
+					
 				$email = getEmail($nick);
 				$_SESSION['nick'] = $nick;
 				$_SESSION['email'] = $email;
@@ -36,11 +36,11 @@
 				addAction($nick, $email, $ip, 'logged_in'); 
 				addConnection($nick, $email, $ip);
 				
-				return '0';	// Logged.
+				return 0;	// Logged.
 			} else { //if ($intentos < 3) {
 				//setcookie( 'intentos', $intentos + 1, time() + 1800 ); //30 minutos
 				
-				return '1'; // Log in failed.
+				return 1; // Log in failed.
 			}
 		/*} 
 		
@@ -53,10 +53,9 @@
 		$truePassword = getPassword($nick);
 		$hashedPassword = hash("sha256", $password, false);		
 
-		if ($truePassword != null)
-			if (strcmp($truePassword, $hashedPassword) == 0)
-				return true;
-		
+		if (strcmp($truePassword, $hashedPassword) == 0)
+			return true;
+	
 		return false;
 	}
 	
@@ -77,7 +76,7 @@
 								<td><p>Álbumes<p></td>
 							</tr>";
 							
-		foreach($userList as $user ) {	
+		foreach($userList as $user) {	
 			$nick = $user['nick'];
 			$avatar = $user['avatar'];
 			$userTable = $userTable."<tr>

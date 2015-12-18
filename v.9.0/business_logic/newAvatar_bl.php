@@ -9,18 +9,20 @@
 
 	if (isset($avatar)) {
 		if (acceptImage($avatar)) {			
-			$path = "data/" . $nick;
+			$path = "data/" . $nick . "/Fotos de Perfil de " . $nick;
 			if (!file_exists("../".$path) and !is_dir("../".$path)) {
 				mkdir("../".$path, 0777, true);	// 0777 default for folder, rather than 0755
 			}
 			
 			$path = $path."/".$avatar["name"];	
 			
-			$error = uploadPhoto($ip, $avatar, $nick, $email, $path, "Fotos de Perfil");
+			$error = uploadPhoto($ip, $avatar, $nick, $email, $path, "Fotos de Perfil de ".$nick);
 
-			if ($error == '0') {				
-				setAvatar($nick, $path);
-			}
+			if ($error != '0') 
+				$path = "data/user.png";
+			
+			setAvatar($nick, $path);
+			echo $path;
 		}	
 				
 	}	

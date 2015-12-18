@@ -19,7 +19,7 @@
 		<div class="Canvas">
 			<?php echo menuHeader(isset($_SESSION['nick']), $_SESSION['nick'], $_SESSION['role']); ?>
 			<div class="GeneralDisplay">
-				<?php echo printUsers(getAllUsers);?> 
+				<?php echo printUsers(getAllUsers());?> 
 			</div>    
 			<br/><br/>   
 		</div>

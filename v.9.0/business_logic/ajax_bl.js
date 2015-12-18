@@ -28,6 +28,36 @@ function validatePassword(password) {
 	xmlhttp.send();
 }
 
+function isEmail(email) {				
+	if (window.XMLHttpRequest) {
+		var xmlhttp = new XMLHttpRequest();
+	} else {
+		var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			var result = xmlhttp.responseText;
+			if (result == 0) {
+					$("#email_error").html("<h6>&#10004;</h6>");
+					$("#email_error").attr("class", "Correct");
+					
+			} else if (result == 1) {
+					$("#email_error").html("<h6>Ese e-mail ya está en uso.</h6>");
+					$("#email_error").attr("class", "Error");
+					
+			} else {
+					$("#email_error").html("<h6>" + xmlhttp.responseText + "</h6>");
+					$("#email_error").attr("class", "Error");
+					
+			}
+		}
+	}
+	
+	xmlhttp.open("GET","/business_logic/checkEmail_bl.php?email=" + email, true);
+	xmlhttp.send();	
+}
+
 function isNick(nick) {				
 	if (window.XMLHttpRequest) {
 		var xmlhttp = new XMLHttpRequest();
@@ -66,8 +96,9 @@ function changeAvatar() {
 		data: formData,
 		contentType: false,
 		processData: false,
-		success: function(datos) {
-			$("#avatar").html("<img src=" + xmlhttp.responseText + " width='120px' height='auto'>");
+		success: function(avatarSRC) {
+			$("#loggedAvatar").html("<img src='" + avatarSRC + "' width='120px' height='auto'>");
+			$("#profileAvatar").html("<img src='" + avatarSRC + "' width='120px' height='auto'>");
 		}
 	});
 }
@@ -216,7 +247,7 @@ function deleteAlbum(albumName) {
 	xmlhttp.send();	
 }
 
-function deletePhoto(albumName, path) {				
+function deletePhoto(targetNick, albumName, path) {				
 	if (window.XMLHttpRequest) {
 		var xmlhttp = new XMLHttpRequest();
 	} else {
@@ -225,7 +256,7 @@ function deletePhoto(albumName, path) {
 	
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			getPhotosOf(targetNick); 	
+			getPhotosOf(targetNick, albumName); 	
 		}
 	}
 	

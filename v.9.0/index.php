@@ -44,6 +44,18 @@
 						case 302:
 							echo "<h2></h2>";
 							break;	
+						case 996:
+							echo "<h2>El usuario o la contraseña son incorrectos.</h2>";
+							break;
+						case 997:
+							echo "<h2>Ha superado el límite de intentos.<br/>Espere 30 minutos antes de volver a intentarlo.<br/>Puede disfrutar de nuestra web mientras tanto.</h2>";
+							break;
+						case 998:
+							echo "<h2>Tu cuenta no ha sido activada por un administrador todavía.</h2>";
+							break;
+						case 999:
+							echo "<h2>Lo sentimos. Un error del servidor ha impedido que podamos loggearle.<br/>Vuelva a intentarlo.</h2>";
+							break;
 						default:
 							echo "<h2>".$message."</h2>";
 							break;
