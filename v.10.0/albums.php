@@ -4,7 +4,9 @@
 	
 	session_start();
 		
+		
 	$nick = $_SESSION['nick']; 
+	$role = $_SESSION['role'];
 	$targetNick = $_GET['nick'];
 	
 	if (!(isset($targetNick) or isset($nick)))
@@ -24,7 +26,14 @@
 		<script language="JavaScript" type="text/javascript" src="./business_logic/lib/jquery-1.11.3.min.js"></script>
 		<script>
 			var targetNick = "<?php echo $targetNick; ?>";
-			getAlbumsOf(targetNick); 	
+			var role = "<?php echo $role; ?>";
+		
+			if (role == "partner"){
+				getAlbumsOf(targetNick);
+			} else {
+				getAlbumsOf("ADMIN");
+			}
+		
 			<?php
 				if (strcmp($nick, $targetNick) == 0) 
 					echo "function uploadAlbum() {
@@ -33,17 +42,17 @@
 							addAlbum(album, access);
 							// Vaciar formulario
 						}";				
-			?>	
+			?>
+			
 		</script>
-	</head>  
+	</head> 
 	<body>
 		<div class="Canvas">
 			<?php 
-				echo menuHeader(isset($nick), $nick, $_SESSION['role']);
+				echo menuHeader(true, $nick, $_SESSION['role']);
 				
-				if (strcmp($nick, $targetNick) == 0)
-					echo newAlbumForm().'<br/><br/><hr/><br/><br/>'; 				
-
+				if (strcmp($_SESSION['role'],"partner") == 0 and strcmp($nick, $targetNick) == 0)
+						echo newAlbumForm().'<br/><br/><hr/><br/><br/>';		
 			?>
 			<div id="display" class="Display"></div>    
 			<br/><br/>   

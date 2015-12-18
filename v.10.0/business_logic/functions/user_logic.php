@@ -4,7 +4,6 @@
 	function newUser($ip, $nick, $password, $email, $name, $surname, $age, $gender)
 	{	
 		$hashedPassword = hash("sha256", $password, false);
-	
 
 		if (addUser($nick, $hashedPassword, $email, $name, $surname, $age, $gender)) {
 			addAction($nick, $email, $ip, 'register');
@@ -22,9 +21,6 @@
 				
 		if ($intentos <= 3){*/
 	
-
-
-
 			if(checkNickPassword($nick, $password))
 			{
 				if (!isAccepted($nick))
@@ -33,7 +29,7 @@
 				$email = getEmail($nick);
 				$_SESSION['nick'] = $nick;
 				$_SESSION['email'] = $email;
-				$_SESSION['role'] = getRole($email);
+				$_SESSION['role'] = getRole($nick);
 				
 				//setcookie( 'intentos', 0, time() + 1800 ); //30 minutos
 				
@@ -57,11 +53,8 @@
 		$truePassword = getPassword($nick);
 		$hashedPassword = hash("sha256", $password, false);		
 
-
 		if (strcmp($truePassword, $hashedPassword) == 0)
 			return true;
-	
-
 		return false;
 	}
 	
@@ -72,6 +65,7 @@
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
+
 	function printUsers($userList) {
 		
 		$userTable = "<table class='Fancy' align=center>

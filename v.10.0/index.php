@@ -44,9 +44,6 @@
 						case 302:
 							echo "<h2></h2>";
 							break;	
-						case 995:
-							echo "<h2>No tiene permisos para acceder a esta zona.</h2>";
-							break;
 						case 996:
 							echo "<h2>El usuario o la contraseña son incorrectos.</h2>";
 							break;

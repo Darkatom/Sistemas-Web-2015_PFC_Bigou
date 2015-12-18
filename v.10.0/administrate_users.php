@@ -1,17 +1,19 @@
-﻿<?php
+<?php
 	include_once './business_logic/functions/database_logic.php';
-	include './business_logic/functions/menu_logic.php';
+	include_once './business_logic/functions/menu_logic.php';
 	
 	session_start();
-		
-	$nick = $_SESSION['nick']; 
-	$targetNick = $_GET['nick'];
 	
-	if (!(isset($targetNick) or isset($nick)))
+	if (!isset($_SESSION['nick']))
 		header('Location: main.php');
 	
-	if (!isset($targetNick))
-		$targetNick = $nick;
+	//$ip = get_client_ip();
+	$nick = $_SESSION['nick'];
+	$role = getRole($nick);
+	//$email = $_SESSION['email'];
+	if($role!="admin"){
+		header('Location: index.php?message=995');
+	}
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -23,30 +25,27 @@
 		<script language="JavaScript" src="./business_logic/ajax_bl.js"></script>
 		<script language="JavaScript" type="text/javascript" src="./business_logic/lib/jquery-1.11.3.min.js"></script>
 		<script>
-			var targetNick = "<?php echo $targetNick; ?>";
-			getAlbumsOf(targetNick); 	
-			<?php
-				if (strcmp($nick, $targetNick) == 0) 
-					echo "function uploadAlbum() {
-							var album = document.getElementById('albumName').value;
-							var access = document.getElementById('access').value;
-							addAlbum(album, access);
-							// Vaciar formulario
-						}";				
-			?>	
+			var role = "<?php echo $role; ?>";
+			if(role=="admin"){
+				getUnacceptedUsers("no");
+				getDropRequested("yes");
+			}
 		</script>
 	</head>  
 	<body>
 		<div class="Canvas">
-			<?php 
-				echo menuHeader(isset($nick), $nick, $_SESSION['role']);
-				
-				if (strcmp($nick, $targetNick) == 0)
-					echo newAlbumForm().'<br/><br/><hr/><br/><br/>'; 				
-
-			?>
+			<?php echo menuHeader(isset($_SESSION['nick']), $_SESSION['nick'], $_SESSION['role']); ?>
+			<br/><br/>
+			<h>Aceptar Usuarios:</h>
+			<hr/>
+			<br/><br/>
 			<div id="display" class="Display"></div>    
-			<br/><br/>   
+			<br/><br/>  
+			<h>Dar de baja Usuarios:</h>
+			<hr/>
+			<br/><br/>
+			<div id="display2" class="Display"></div>    
+			<br/><br/>  
 		</div>
 	</body>
 </html>
