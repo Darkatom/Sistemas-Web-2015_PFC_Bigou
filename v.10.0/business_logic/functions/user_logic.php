@@ -103,30 +103,27 @@
 										<td><p>Aceptado</p></td>
 										<td><p>Perfil<p></td>
 										<td><p>Álbumes<p></td>
-										<td><p>Petición de Baja</p></td>
-										<td><p>Validar</p></td>
+										<td><p>Ha pedido la Baja</p></td>
+										<td><p>Dar de Baja</p></td>
+										<td><p>Aceptar</p></td>
 									</tr>";
 		foreach($userList as $user ) {	
 			$nick = $user['nick'];
 			$avatar = $user['avatar'];
 			$accepted = $user['accepted'];
-			$dropReq = $user['dropRequest'];
+			$dropReq = $user['drop_request'];
 			$userTable = $userTable."<tr>
 										<td class='Avatar'>";
 			if (strlen($avatar) > 0)							
 					$userTable = $userTable."<img src='$avatar' width=40px/>";
 			
 			$userTable = $userTable."</td>
-										<td>$nick</td>
+										<td><p>$nick</p></td>
+										<td><p>$accepted</p></td>
 										<td><a href='profile.php?nick=$nick'><button class='Basic Fancy Login' name='profile'>Ver Perfil</button></a></td>
 										<td><a href='albums.php?nick=$nick'><button class='Basic Fancy Login' name='profile'>Ver Álbumes</button></a></td>
-										<td><p>$accepted</p></td>";
-				
-			$userTable = $userTable . "<td>";
-			if (strcmp($dropReq, 'yes') == 0)
-				$userTable = $userTable . "<button class='Basic Fancy' name='dropRequest' onClick='dropUser(\"$nick\");'>&#10008</button></a>";
-				
-			$userTable = $userTable . "</td>
+										<td><p>$dropReq</p></td>
+										<td><button class='Basic Fancy' name='dropRequest' onClick='dropUser(\"$nick\");'>&#10008</button></a></td>
 									   <td>";
 			if (strcmp($accepted, 'no') == 0)
 				$userTable = $userTable . "<button class='Basic Fancy' name='aceptar' onClick='accept(\"$nick\");'>&#10003</button></a>";

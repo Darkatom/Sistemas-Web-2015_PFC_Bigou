@@ -88,7 +88,7 @@
 	}
 	
 	function getDropRequested($requested) {
-		return makeQuery("SELECT * FROM user WHERE dropRequest='{$requested}'");
+		return makeQuery("SELECT * FROM user WHERE drop_request='{$requested}'");
 	}
 	
 	function getAllUsers() {
@@ -140,7 +140,7 @@
 	}
 	
 	function setDropRequest($nick){
-		return makeQuery("UPDATE user SET dropRequest='yes' WHERE nick = '{$nick}'");
+		return makeQuery("UPDATE user SET drop_request='yes' WHERE nick='{$nick}'");
 	}
 	
 	function setPassword($nick, $password) {
