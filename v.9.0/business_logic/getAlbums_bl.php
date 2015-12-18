@@ -12,7 +12,7 @@
 		$targetNick = $_GET['target'];
 		$result = "";
 		
-		switch($target) {
+		switch($targetNick) {
 			case "ADMIN":
 				break;
 				

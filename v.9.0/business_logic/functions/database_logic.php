@@ -148,13 +148,17 @@
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	function isAlbum($nick, $albumName) {
-		return mysqli_num_rows(makeQuery("SELECT * FROM album WHERE nick='$nick' AND name='$albumName'")) > 0;
+	function isNick($nick) {
+		return mysqli_num_rows(makeQuery("SELECT * FROM user WHERE nick='$nick'")) > 0;
 	}
 	
 	function isAccepted($nick, $albumName) {
 		$accepted = mysqli_fetch_assoc(makeQuery("SELECT * FROM album WHERE nick='$nick'"))['accepted'];
 		return strcmp($accepted, 'yes') == 0;
+	}
+	
+	function isAlbum($nick, $albumName) {
+		return mysqli_num_rows(makeQuery("SELECT * FROM album WHERE nick='$nick' AND name='$albumName'")) > 0;
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

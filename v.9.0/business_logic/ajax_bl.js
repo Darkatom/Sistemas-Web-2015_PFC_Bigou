@@ -1,3 +1,62 @@
+function validatePassword(password) {		
+	if (window.XMLHttpRequest) {
+		var xmlhttp = new XMLHttpRequest();
+	} else {
+		var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {	
+			switch(xmlhttp.responseText) {
+				case "true":
+					$("#password_error").html("<h6>&#10004;/h6>");
+					$("#password_error").attr("class", "Correct");
+					break;
+				case "false":
+					$("#password_error").html("<h6>Su contraseña no es segura.</h6>");
+					$("#password_error").attr("class", "Error");
+					break;
+				default:
+					$("#password_error").html("<h6>Lo sentimos, ha habido un error.</h6>");
+					$("#password_error").attr("class", "Error");
+					break;
+			}		 
+		}
+	}
+	
+	xmlhttp.open("GET", "checkPassword_NUSOAP_CALL.php?password=" + password, true);
+	xmlhttp.send();
+}
+
+function isNick(nick) {				
+	if (window.XMLHttpRequest) {
+		var xmlhttp = new XMLHttpRequest();
+	} else {
+		var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			var result = xmlhttp.responseText;
+			if (result == 0) {
+					$("#user_error").html("<h6>&#10004;</h6>");
+					$("#user_error").attr("class", "Correct");
+					
+			} else if (result == 1) {
+					$("#user_error").html("<h6>Ese nombre de usuario ya está en uso.</h6>");
+					$("#user_error").attr("class", "Error");
+					
+			} else {
+					$("#user_error").html("<h6>" + xmlhttp.responseText + "</h6>");
+					$("#user_error").attr("class", "Error");
+					
+			}
+		}
+	}
+	
+	xmlhttp.open("GET","/business_logic/checkNick_bl.php?nick=" + nick, true);
+	xmlhttp.send();	
+}
 
 function changeAvatar() {
 	var formData = new FormData($("#ajaxAvatar")[0]);
@@ -15,21 +74,49 @@ function changeAvatar() {
 
 function changePassword(oldPassword, newPassword, repeatPassword) {				
 	if (window.XMLHttpRequest) {
-		// code for IE7+, Firefox, Chrome, Opera, Safari
 		var xmlhttp = new XMLHttpRequest();
 	} else {
-		// code for IE6, IE5
 		var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 	}
 	
 	xmlhttp.onreadystatechange = function() {
-		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			if (xmlhttp.responseText == "false") {
-				//jQuery
-			} else {
-				document.getElementById("oldPassword").value = "";								
-				document.getElementById("newPassword").value = "";
-				document.getElementById("repeatPassword").value = "";
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {			
+			switch(xmlhttp.responseText) {
+				case 0:
+					document.getElementById("oldPassword").value = "";								
+					document.getElementById("newPassword").value = "";
+					document.getElementById("repeatPassword").value = "";
+					$("#old_error").html("");
+					$("#old_error").attr("class", "");
+					$("#new_error").html("");
+					$("#new_error").attr("class", "");
+					$("#repeat_error").html("");
+					$("#repeat_error").attr("class", "");
+					break;
+				case 1:
+					$("#new_error").html("<h6>Su nueva contraseña no es segura.</h6>");
+					$("#new_error").attr("class", "Error");
+					break;
+				case 2:
+					$("#old_error").html("<h6>Ésta no es su contraseña.</h6>");
+					$("#old_error").attr("class", "Error");
+					break;
+				case 3:
+					$("#repeat_error").html("<h6>Sus contraseñas no coinciden.</h6>");
+					$("#repeat_error").attr("class", "Error");
+					break;
+				default:
+					document.getElementById("oldPassword").value = "";								
+					document.getElementById("newPassword").value = "";
+					document.getElementById("repeatPassword").value = "";
+					$("#old_error").html("");
+					$("#old_error").attr("class", "");
+					$("#new_error").html("");
+					$("#new_error").attr("class", "");
+					$("#repeat_error").html("");
+					$("#repeat_error").attr("class", "");
+					alert("Lo sentimos, ha habido un error inesperado procesando su petición. Por favor, inténtelo de nuevo más tarde.");
+					break;
 			}
 		}
 	}
@@ -63,10 +150,8 @@ function addAlbum(albumName, access) {
 
 function addPhoto(albumName, image) {				
 	if (window.XMLHttpRequest) {
-		// code for IE7+, Firefox, Chrome, Opera, Safari
 		var xmlhttp = new XMLHttpRequest();
 	} else {
-		// code for IE6, IE5
 		var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 	}
 	
@@ -82,10 +167,8 @@ function addPhoto(albumName, image) {
 
 function getAlbumsOf(target) {		
 	if (window.XMLHttpRequest) {
-		// code for IE7+, Firefox, Chrome, Opera, Safari
 		var xmlhttp = new XMLHttpRequest();
 	} else {
-		// code for IE6, IE5
 		var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 	}
 	
@@ -101,10 +184,8 @@ function getAlbumsOf(target) {
 
 function getPhotosOf(target, album) {		
 	if (window.XMLHttpRequest) {
-		// code for IE7+, Firefox, Chrome, Opera, Safari
 		var xmlhttp = new XMLHttpRequest();
 	} else {
-		// code for IE6, IE5
 		var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 	}
 	
@@ -120,10 +201,8 @@ function getPhotosOf(target, album) {
 
 function deleteAlbum(albumName) {				
 	if (window.XMLHttpRequest) {
-		// code for IE7+, Firefox, Chrome, Opera, Safari
 		var xmlhttp = new XMLHttpRequest();
 	} else {
-		// code for IE6, IE5
 		var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 	}
 	
@@ -139,10 +218,8 @@ function deleteAlbum(albumName) {
 
 function deletePhoto(albumName, path) {				
 	if (window.XMLHttpRequest) {
-		// code for IE7+, Firefox, Chrome, Opera, Safari
 		var xmlhttp = new XMLHttpRequest();
 	} else {
-		// code for IE6, IE5
 		var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 	}
 	

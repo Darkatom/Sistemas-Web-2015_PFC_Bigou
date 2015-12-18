@@ -3,16 +3,26 @@
 	include './functions/photo_logic.php';
 	
 	$ip = get_client_ip();
-	$nick = $_POST['nick']; 
-	$password = $_POST['password'];
-	$email = $_POST['email'];
+	$nick = $_POST['nick_form']; 
+	$password = $_POST['password_form'];
+	$repeatPassword = $_POST['repeatPassword_form'];
+	$email = $_POST['email_form'];
 	$name = $_POST['name'];
 	$surname = $_POST['surname'];
 	$age = $_POST['age'];
 	$gender = $_POST['gender'];
 						
 	$avatar = $_FILES['avatar'];
-					
+	
+	if (strcmp($password, $repeatPassword) != 0)
+		header("Location: ../index.php?message=102");
+		
+	if (!preg_match("/^([_|-]?[a-zA-Z]*[_|-]?[0-9]*[_|-]?)+$/", $nick))
+		header("Location: ../index.php?message=103");
+		
+	if (!preg_match("/^[a-zA-Z]+([a-zA-Z]*[.|_|-]?)*@[a-zA-Z]+\.[a-zA-Z]+\.?[a-zA-Z]?$/", $email))
+		header("Location: ../index.php?message=104");
+	
 	if (newUser($ip, $nick, $password, $email, $name, $surname, $age, $gender)) {
 		$path = "data/user.png";
 	
@@ -35,6 +45,8 @@
 		
 		setAvatar($nick, $path);
 		
-		header("Location: ../main.php");
+		header("Location: ../index.php?message=101");
 	}
+	
+	header("Location: ../index.php?message=105");
 ?> 

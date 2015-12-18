@@ -181,11 +181,14 @@
 						<td class="Header"><h2>Contraseña</h2></td>
 						<td ' . $colspan . '>
 							<label>Contraseña actual:</label>
-							<input type="password" name="oldPassword" id="oldPassword"></br></br>
+							<input type="password" name="oldPassword" id="oldPassword">&emsp;&emsp;<div class="" id="old_error"></div>
+							</br></br>
 							<label>Nueva contraseña:</label>
-							<input type="password" name="newPassword" id="newPassword"></br></br>
+							<input type="password" name="newPassword" id="newPassword">&emsp;&emsp;<div class="" id="new_error"></div>
+							</br></br>
 							<label>Repita la contraseña:</label>
-							<input type="password" name="repeatPassword" id="repeatPassword" onBlur="checkPassword()"></br></br>
+							<input type="password" name="repeatPassword" id="repeatPassword" onBlur="checkPassword()">&emsp;&emsp;<div class="" id="repeat_error"></div>
+							</br></br>
 							<button class="Basic Fancy" onClick="uploadPassword()"> Cambiar Contraseña </button>
 						</td>
 					  </tr>';

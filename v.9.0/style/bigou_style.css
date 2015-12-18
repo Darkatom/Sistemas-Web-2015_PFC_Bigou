@@ -44,6 +44,47 @@ div.GeneralDisplay {
     margin: 0 auto;
 }
 
+div.Correct {
+	width: auto;
+	height: auto;
+	
+	padding: 0px 10px;
+	
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+	
+	border: 1px solid #33c233;
+	background: -webkit-linear-gradient(top,#abf3ab 0%,#86E781 100%);
+	background: -moz-linear-gradient(top,#abf3ab 0%,#86E781 100%);
+	background: -o-linear-gradient(top,#abf3ab 0%,#86E781 100%);
+	background: -khtml-linear-gradient(top,#abf3ab 0%,#86E781 100%);
+	background: -ms-linear-gradient(top,#abf3ab 0%,#86E781 100%);
+	background: linear-gradient(top,#abf3ab 0%,#86E781 100%);
+}
+
+div.Error {
+	width: auto;
+	height: auto;
+	
+	padding: 0px 10px;
+	
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+	
+	border: 1px solid #f24040;
+	background: -webkit-linear-gradient(top,#ffbcb3 0%,#ff8e8e 100%);
+	background: -moz-linear-gradient(top,#ffbcb3 0%,#ff8e8e 100%);
+	background: -o-linear-gradient(top,#ffbcb3 0%,#ff8e8e 100%);
+	background: -khtml-linear-gradient(top,#ffbcb3 0%,#ff8e8e 100%);
+	background: -ms-linear-gradient(top,#ffbcb3 0%,#ff8e8e 100%);
+	background: linear-gradient(top,#ffbcb3 0%,#ff8e8e 100%);
+
+}
+
 
 /* ------------------------------------------------------ */
 /* 				 		  GENERAL 				 		  */
@@ -76,6 +117,14 @@ h2 {
 	color:#666;
 	font-size: 16px;
 	font-weight: 800;
+}
+
+h6 {
+	font-family:'Lucida Grande',Tahoma,Verdana,Arial,Sans-serif;
+	color:#666;
+	font-size: 12px;
+	font-weight: 600;
+	margin: 2px;
 }
 
 p {

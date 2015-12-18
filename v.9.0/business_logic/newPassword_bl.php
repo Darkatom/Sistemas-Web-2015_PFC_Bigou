@@ -12,11 +12,17 @@
 	$newPassword = $_GET['newPassword']; 
 	$repeatPassword = $_GET['repeatPassword']; 
 
-	if(checkNickPassword($nick, $oldPassword) and strcmp($newPassword, $repeatPassword) == 0){
-		if(changePassword($nick, $newPassword)){
-			echo "true";
+	if(checkNickPassword($nick, $oldPassword)){
+		if (strcmp($newPassword, $repeatPassword) == 0){
+			if(changePassword($nick, $newPassword)){
+				echo '0';
+			} else {
+				echo '4';
+			}
+		} else {
+			echo '3';
 		}
+	} else {
+		echo '2';
 	}
-	
-	echo "false";
 ?> 
