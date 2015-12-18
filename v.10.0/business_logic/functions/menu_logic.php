@@ -50,20 +50,20 @@
 						</tr>
 						<tr>
 							<td class="Menu" colspan="2">
-								<a href="main.php"><button class="Basic Menu" name="main">Inicio</button></a><!--';
+								<a href="main.php"><button class="Basic Menu" name="main">Inicio</button></a>';
 		if ($logged) {
 			if ($role=="partner"){
-				$header = $header.'--><a href="albums.php"><button class="Basic Menu" name="albums">Mis Álbumes</button></a><!--
-							   --><a href="index.php"><button class="Basic Menu" name="albums">Buscar</button></a><!--
-							   --><a href="users.php"><button class="Basic Menu" name="albums">Usuarios</button></a><!--';
+				$header = $header.'<a href="albums.php"><button class="Basic Menu" name="albums">Mis Álbumes</button></a>
+								   <a href="index.php"><button class="Basic Menu" name="albums">Buscar</button></a>
+								   <a href="users.php"><button class="Basic Menu" name="albums">Usuarios</button></a>';
 
 			}else{
-				$header = $header.'--><a href="albums.php"><button class="Basic Menu" name="albums">Administrar Álbumes</button></a><!--
-								   --><a href="users.php"><button class="Basic Menu" name="administrate_users">Administrar Usuarios</button></a>';
+				$header = $header.'<a href="albums.php"><button class="Basic Menu" name="albums">Administrar Álbumes</button></a>
+								   <a href="users.php"><button class="Basic Menu" name="administrate_users">Administrar Usuarios</button></a>';
 			}
 		}
 							
-		$header = $header.'--><a href="credits.php"><button class="Basic Menu" name="credits">Créditos</button></a>
+		$header = $header.'<a href="credits.php"><button class="Basic Menu" name="credits">Créditos</button></a>
 						</td>
 					</tr>
 				</table>

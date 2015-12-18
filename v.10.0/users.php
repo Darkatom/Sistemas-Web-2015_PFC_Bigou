@@ -22,12 +22,14 @@
 	<body>
 		<div class="Canvas">
 			<?php echo menuHeader(isset($_SESSION['nick']), $_SESSION['nick'], $_SESSION['role']); ?>
-			<br/><br/>
-			<h2>Todos los Usuarios:</h2>
-			<hr/>
-			<br/><br/>
-			<div id="display" class="Display"></div>  
-			<br/><br/>  
+			<br/><br/>		
+			<div class="GeneralDisplay">
+				<h2>Todos los Usuarios:</h2>
+				<hr/>
+				<br/><br/>
+				<div id="display" class="Display"></div>  
+				<br/><br/>
+			</div>			
 		</div>
 	</body>
 </html>
