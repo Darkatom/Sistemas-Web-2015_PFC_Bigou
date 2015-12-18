@@ -229,6 +229,7 @@ button.Fancy {
 
 button.Login {
 	width: 90%;
+	min-width: 85px;
 }
 
 input.Basic {
@@ -290,6 +291,7 @@ input.Fancy {
 
 input.Login {
 	width: 90%;
+	min-width: 85px;
 }
 
 
@@ -298,6 +300,7 @@ input.Login {
 /*-------------------------------------------------- */
 
 .Login {
+	text-align: center;
 	float: right;
 	width: auto;
 	height: auto;

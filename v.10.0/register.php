@@ -39,7 +39,7 @@
 			
 			function checkEmail() {
 				var email = document.getElementById('email_form').value;
-				if (! /^[a-zA-Z]+([a-zA-Z]*[.|_|-]?)*@[a-zA-Z]+\.[a-zA-Z]+\.?[a-zA-Z]?$/.test(email) ) {	
+				if (! /^[a-zA-Z]+([a-zA-Z]*[.|_|-]?[0-9]*)*@[a-zA-Z]+\.[a-zA-Z]+\.?[a-zA-Z]?$/.test(email) ) {	
 						$("#email_error").html("<h6>Introduzca un e-mail correcto.</h6>");
 						$("#email_error").attr("class", "Error");
 						return false;

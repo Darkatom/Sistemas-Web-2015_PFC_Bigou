@@ -230,6 +230,25 @@ function getPhotosOf(target, album) {
 	xmlhttp.send();
 }
 
+function getAllUsers() {
+	if (window.XMLHttpRequest) {
+		// code for IE7+, Firefox, Chrome, Opera, Safari
+		var xmlhttp = new XMLHttpRequest();
+	} else {
+		// code for IE6, IE5
+		var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			$("#display").html(xmlhttp.responseText);
+		}
+	}
+	
+	xmlhttp.open("GET","/business_logic/getUsers_bl.php", true);
+	xmlhttp.send();
+}
+
 function getUnacceptedUsers(accepted) {		
 	if (window.XMLHttpRequest) {
 		// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -315,7 +334,7 @@ function accept(user){
 	
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			$("#display").html(xmlhttp.responseText);
+			getAllUsers();
 		}
 	}
 	
@@ -334,7 +353,7 @@ function dropUser(user){
 	
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			$("#display").html(xmlhttp.responseText);
+			getAllUsers();
 		}
 	}
 	

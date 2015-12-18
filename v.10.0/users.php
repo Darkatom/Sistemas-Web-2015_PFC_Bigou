@@ -11,17 +11,22 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Bigou - Usuarios Registrados</title>       
-        <link href="style/bigou_style.css" rel="stylesheet" type="text/css" />
-        <!--<link rel='stylesheet' type='text/css' media='only screen and (max-width: 480px)' href='estilos/smartphone.css'/>-->
+		<script language="JavaScript" src="./business_logic/ajax_bl.js"></script>
+		<script language="JavaScript" type="text/javascript" src="./business_logic/lib/jquery-1.11.3.min.js"></script>
+		<script>
+			getAllUsers();
+			var intervalID = window.setInterval(getAllUsers(), 5000);
+		</script>
 	</head>  
-    <body>
 	<body>
 		<div class="Canvas">
 			<?php echo menuHeader(isset($_SESSION['nick']), $_SESSION['nick'], $_SESSION['role']); ?>
-			<div class="GeneralDisplay">
-				<?php echo printUsers(getAllUsers());?> 
-			</div>    
-			<br/><br/>   
+			<br/><br/>
+			<h2>Todos los Usuarios:</h2>
+			<hr/>
+			<br/><br/>
+			<div id="display" class="Display"></div>  
+			<br/><br/>  
 		</div>
 	</body>
 </html>

@@ -16,13 +16,20 @@
 	
 	function logged($nick) {
 		$avatarPath = getAvatar($nick);
-        return '<div class="Login">
+        $result = '<div class="Login">
 					<h1>'.$nick.'</h1>
-					<div id="loggedAvatar"><img src="'.$avatarPath.'" width="100" height="auto"/></div>
+					<div id="loggedAvatar">';
+					
+		if (strlen ($avatarPath) > 0)
+			$result = $result . '<img src="'.$avatarPath.'" width="100" height="auto"/>';
+			
+		$result = $result . '</div>
 					<br/><br/>
 					<a href="profile.php"><button class="Basic Fancy Login" name="profile">Mi perfil</button></a>
 					<a href="business_logic/logout_bl.php"><button class="Basic Fancy Login" name="logout">Cerrar sesión</button></a>	
 				</div>';
+				
+		return $result;
 	}
 	
 	function menuHeader($logged, $nick, $role) {
@@ -52,8 +59,7 @@
 
 			}else{
 				$header = $header.'--><a href="albums.php"><button class="Basic Menu" name="albums">Administrar Álbumes</button></a><!--
-								   --><a href="administrate_users.php"><button class="Basic Menu" name="administrate_users">Administrar Usuarios</button></a><!--
-								   --><a href="users.php"><button class="Basic Menu" name="view_users">Usuarios Registrados</button></a><!--';
+								   --><a href="users.php"><button class="Basic Menu" name="administrate_users">Administrar Usuarios</button></a>';
 			}
 		}
 							

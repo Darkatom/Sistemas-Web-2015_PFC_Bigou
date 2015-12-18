@@ -91,4 +91,40 @@
 		return $userTable;					
 	}
 	
+	function printUsersForAdmin($userList) {
+		$userTable = "table class='Fancy' align=center>
+									<tr class='Header'>
+										<td><p>Usuario</p></td>
+										<td><p>Aceptado</p></td>
+										<td><p>Perfil<p></td>
+										<td><p>Álbumes<p></td>
+										<td><p>Petición de Baja</p></td>
+										<td><p>Validar</p></td>
+									</tr>";
+		foreach($userList as $user ) {	
+			$nick = $user['nick'];
+			$accepted = $user['accepted'];
+			$dropReq = $user['dropRequest'];
+			$userTable = $userTable."<tr>
+										<td>$nick</td>
+										<td><a href='profile.php?nick=$nick'><button class='Basic Fancy Login' name='profile'>Ver Perfil</button></a></td>
+										<td><a href='albums.php?nick=$nick'><button class='Basic Fancy Login' name='profile'>Ver Álbumes</button></a></td>
+										<td><p>$accepted</p></td>";
+				
+			$userTable = $userTable . "<td>";
+			if (strcmp($dropReq, 'yes') == 0)
+				$userTable = $userTable . "<button class='Basic Fancy' name='aceptar' onClick='dropUser(\"$nick\");'>&#10003</button></a>";
+				
+			$userTable = $userTable . "</td>
+									   <td>";
+			if (strcmp($accepted, 'no') == 0)
+				$userTable = $userTable . "<button class='Basic Fancy' name='aceptar' onClick='accept(\"$nick\");'>&#10003</button></a>";
+				
+			$userTable = $userTable . "</td>
+									</tr>";
+		}
+		$userTable = $userTable."</table>";
+				
+		return $userTable;					
+	}
 ?>

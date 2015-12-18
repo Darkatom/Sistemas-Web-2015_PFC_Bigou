@@ -20,7 +20,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Bigou - Mis Álbumes</title>       
+        <title>Bigou - Ver Álbumes</title>       
         <link href="style/bigou_style.css" rel="stylesheet" type="text/css" />
 		<script language="JavaScript" src="./business_logic/ajax_bl.js"></script>
 		<script language="JavaScript" type="text/javascript" src="./business_logic/lib/jquery-1.11.3.min.js"></script>

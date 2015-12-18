@@ -7,14 +7,12 @@
 	$ip = get_client_ip();
 	$nick = $_SESSION['nick']; 
 	$email = $_SESSION['email']; 
-	$role = getRole($nick);
+	$role = $_SESSION['role'];
 	
 	if (isset($_GET['target'])) {
 		$targetNick = $_GET['target'];
 		$album = $_GET['album']; 
-		$accessType = getAlbumAccess($nick, $album)->access;
-		echo '<script language="javascript">alert($role)</script>';
-		//echo $role;
+		$access = getAlbumAccess($targetNick, $album);
 				
 		$result = "";
 		if (isAlbum($targetNick, $album)) {
@@ -23,8 +21,8 @@
 					$result = printPhotos(getPhotos($targetNick, $album), true);
 					addAction($nick, $email, $ip, "self_photos");	
 				
-				// EXTRA: Añadir privileged access.
-				} elseif (strcmp($accessType, "private") != 0) {
+			
+				} elseif (strcmp($access, "private") != 0) {
 					$result = printPhotos(getPhotos($targetNick, $album), false);
 					addAction($nick, $email, $ip, "others_photos");	 
 				
@@ -32,9 +30,9 @@
 					echo "Este álbum no puede ser visionado.";
 				}
 			} else {
-				if (strcmp(getAlbumAccess($nick, $album), "public") == 0) {
+				if (strcmp($access, "public") == 0) {
 					$result = printPhotos(getPhotos($targetNick, $album), false);
-					addAction($nick, $email, $ip, "others_photos");	
+					addAction($targetNick, $email, $ip, "others_photos");	
 				
 				} else {
 					echo "Este álbum no es público.";

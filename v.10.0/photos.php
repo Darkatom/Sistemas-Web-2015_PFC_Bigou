@@ -13,7 +13,6 @@
 		$targetNick = $nick;
 	
 	if (!(isset($_GET['nick']) or isset($nick)) or !isset($_GET['album']) or !isAlbum($targetNick, $album))
-
 		header('Location: main.php');
 ?>
 
@@ -22,7 +21,7 @@
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title><?php echo "Bigou - (".$nick.") - ".$album; ?></title>       
+        <title><?php echo "Bigou - (".$targetNick.") - ".$album; ?></title>       
         <link href="style/bigou_style.css" rel="stylesheet" type="text/css" />
 		<script language="JavaScript" src="./business_logic/ajax_bl.js"></script>
 		<script language="JavaScript" type="text/javascript" src="./business_logic/lib/jquery-1.11.3.min.js"></script>

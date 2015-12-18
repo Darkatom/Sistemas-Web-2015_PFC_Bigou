@@ -112,7 +112,7 @@
 	}
 	
 	function getAlbumAccess($nick, $albumName) {
-		return makeQuery("SELECT access FROM album WHERE nick='{$nick}' AND name='{$albumName}'");
+		return  mysqli_fetch_assoc(makeQuery("SELECT access FROM album WHERE nick='{$nick}' AND name='{$albumName}'"))['access'];
 	}
 	
 	function getAlbums($nick) {
