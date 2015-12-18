@@ -11,6 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Bigou - Usuarios Registrados</title>       
+        <link href="style/bigou_style.css" rel="stylesheet" type="text/css" />
 		<script language="JavaScript" src="./business_logic/ajax_bl.js"></script>
 		<script language="JavaScript" type="text/javascript" src="./business_logic/lib/jquery-1.11.3.min.js"></script>
 		<script>
