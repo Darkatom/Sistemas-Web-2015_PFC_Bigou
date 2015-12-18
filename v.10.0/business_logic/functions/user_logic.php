@@ -80,7 +80,11 @@
 			$nick = $user['nick'];
 			$avatar = $user['avatar'];
 			$userTable = $userTable."<tr>
-										<td class='Avatar'><img src='$avatar' width=40px/></td>
+										<td class='Avatar'>";
+			if (strlen($avatar) > 0)							
+					$userTable = $userTable."<img src='$avatar' width=40px/>";
+			
+			$userTable = $userTable."</td>
 										<td>$nick</td>
 										<td><a href='profile.php?nick=$nick'><button class='Basic Fancy Login' name='profile'>Ver Perfil</button></a></td>
 										<td><a href='albums.php?nick=$nick'><button class='Basic Fancy Login' name='profile'>Ver Álbumes</button></a></td>
@@ -92,8 +96,9 @@
 	}
 	
 	function printUsersForAdmin($userList) {
-		$userTable = "table class='Fancy' align=center>
+		$userTable = "<table class='Fancy' align=center>
 									<tr class='Header'>
+										<td><p>Avatar<p></td>
 										<td><p>Usuario</p></td>
 										<td><p>Aceptado</p></td>
 										<td><p>Perfil<p></td>
@@ -103,9 +108,15 @@
 									</tr>";
 		foreach($userList as $user ) {	
 			$nick = $user['nick'];
+			$avatar = $user['avatar'];
 			$accepted = $user['accepted'];
 			$dropReq = $user['dropRequest'];
 			$userTable = $userTable."<tr>
+										<td class='Avatar'>";
+			if (strlen($avatar) > 0)							
+					$userTable = $userTable."<img src='$avatar' width=40px/>";
+			
+			$userTable = $userTable."</td>
 										<td>$nick</td>
 										<td><a href='profile.php?nick=$nick'><button class='Basic Fancy Login' name='profile'>Ver Perfil</button></a></td>
 										<td><a href='albums.php?nick=$nick'><button class='Basic Fancy Login' name='profile'>Ver Álbumes</button></a></td>
@@ -113,7 +124,7 @@
 				
 			$userTable = $userTable . "<td>";
 			if (strcmp($dropReq, 'yes') == 0)
-				$userTable = $userTable . "<button class='Basic Fancy' name='aceptar' onClick='dropUser(\"$nick\");'>&#10003</button></a>";
+				$userTable = $userTable . "<button class='Basic Fancy' name='dropRequest' onClick='dropUser(\"$nick\");'>&#10008</button></a>";
 				
 			$userTable = $userTable . "</td>
 									   <td>";

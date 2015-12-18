@@ -141,7 +141,7 @@
 		
 	}
 	
-function profileTable($nick, $targetNick) {
+	function profileTable($nick, $targetNick) {
 		$selfProfile = (strcmp($nick, $targetNick) == 0);
 		$role = getRole($targetNick);
 		$avatar = getAvatar($targetNick);
@@ -204,6 +204,13 @@ function profileTable($nick, $targetNick) {
 							<button class="Basic Fancy" onClick="uploadPassword()"> Cambiar Contraseña </button>
 						</td>
 					  </tr>';
+			if (strcmp($role, 'partner') == 0)
+				$profile = $profile.'<tr>
+										<td class="Header"><h2>Borrar Cuenta</h2></td>
+										<td ' . $colspan . '>
+											<button class="Basic Fancy" onClick="makeDropRequest(\''.$nick.'\')">Pedir Baja</button>
+										</td>
+									  </tr>';
 		}
 		
 		$profile = $profile.'</table>

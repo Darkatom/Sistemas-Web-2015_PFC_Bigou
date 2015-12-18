@@ -372,7 +372,7 @@ function makeDropRequest(user){
 	
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			$("#display").html(xmlhttp.responseText);
+			alert("Un administrador borrará su cuenta en breves.\nEsperamos que haya disfrutado de su tiempo con nosotros.");
 		}
 	}
 	
