@@ -320,15 +320,6 @@ input.Login {
 	/*box-shadow: 10px 0 20px -1px rgba(31, 73, 125, 0.1), -10px 0 20px -1px rgba(31, 73, 125, 0.1);*/
 }
 
-.Login input[type="text"] input[type="password"] {
-
-
-}
-
-.Login input[type="submit"] {
-
-}
-
 .Login h1 {
 	padding: 0;
 	padding-bottom: 3px;
@@ -370,6 +361,9 @@ input.Login {
 	background: linear-gradient(top,#f7f7f7 0%,#dedede 100%);
 }
 
+.Header img.Logo {
+	text-align: center;
+}
 
 /* ------------------------------------------------- */
 /*		  	 	  		FORMS				 		 */

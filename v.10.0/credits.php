@@ -24,6 +24,10 @@
 				<h2 align="center">
 					Todos los recursos utilizados en esta web han sido generados por nosotros, sus creadores:<br/>Olatz (a.k.a. Darkatom) y José Ángel (a.k.a. jagumiel).
 					<br/><br/>
+					Las fuentes utilizadas en esta página han sido:<br/>
+					&emsp;Motion Picture (Personal Use) de Måns Grebäck [Logo]<br/>
+					&emsp;Lucida Grande
+					<br/><br/>
 					No nos hacemos responsables del CopyRight de las fotos subidas a nuestros servidores.
 					<br/><br/>
 					Cualquier reclamación al respecto puede hacerse mandando un mensaje a<br/>darkatomish@gmail.com o a jagumiel001@gmail.com<br/>

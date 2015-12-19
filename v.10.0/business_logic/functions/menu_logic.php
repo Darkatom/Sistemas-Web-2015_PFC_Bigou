@@ -37,7 +37,7 @@
 					<table class="Cabecera">
 						<tr>
 							<td class="Title">
-								<h1>Bigou</h1>
+								<img class="Logo" src="data/Logo_Bigou.png"/>
 							</td>
 							<td>';
 		if (!$logged) {
